@@ -5,10 +5,49 @@
  */
 package pat.proyecto.DiarioFacil;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Cali
  */
-public class Provedor {
+public class Provedor extends Usuario {
+
+    private ArrayList<Product> productLst = new ArrayList<>();
+    private String cedulaJuridica;
+
+    public Provedor() {
+    }
+
+    public Provedor(String cedulaJuridica) {
+        this.cedulaJuridica = cedulaJuridica;
+    }
+
+    public Provedor(String cedulaJuridica, int id, String name, int phone, String email, String password, String tipo) {
+        super(id, name, phone, email, password, tipo);
+        this.cedulaJuridica = cedulaJuridica;
+    }
+
+    public Provedor(String cedulaJuridica, int i, String nombre) {
+        super(i, nombre);
+        this.cedulaJuridica = cedulaJuridica;
+    }
+
+    public ArrayList<Product> getProductLst() {
+        return productLst;
+    }
+
+    public void setProductLst(ArrayList<Product> productLst) {
+        this.productLst = productLst;
+    }
+
+    public String getCedulaJuridica() {
+        return cedulaJuridica;
+    }
+
+    public void setCedulaJuridica(String cedulaJuridica) {
+        this.cedulaJuridica = cedulaJuridica;
+    }
+    
     
 }

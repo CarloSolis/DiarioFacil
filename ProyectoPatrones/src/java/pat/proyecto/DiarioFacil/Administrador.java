@@ -10,17 +10,6 @@ package pat.proyecto.DiarioFacil;
  * @author Cali
  */
 public class Administrador extends Usuario{
-    
-    private SuperMercado SuperMarket;
-
-    
-    public SuperMercado getSuperMarket() {
-        return SuperMarket;
-    }
-
-    public void setSuperMarket(SuperMercado SuperMarket) {
-        this.SuperMarket = SuperMarket;
-    }
   
     
 }

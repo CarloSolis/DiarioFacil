@@ -11,4 +11,6 @@ package pat.proyecto.DiarioFacil;
  */
 public class SuperMercado {
     
+    //Admins uno o mas?
+    
 }
