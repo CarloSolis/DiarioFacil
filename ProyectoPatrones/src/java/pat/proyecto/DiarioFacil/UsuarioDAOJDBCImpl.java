@@ -5,11 +5,7 @@ package pat.proyecto.DiarioFacil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import pat.proyecto.DiarioFacil.IUsuarioDAO;
-import pat.proyecto.DiarioFacil.Servicio;
-import pat.proyecto.DiarioFacil.Servicio;
-import pat.proyecto.DiarioFacil.Usuario;
-import pat.proyecto.DiarioFacil.Usuario;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,37 +18,48 @@ import pat.proyecto.DiarioFacil.Usuario;
  */
 public class UsuarioDAOJDBCImpl extends Servicio implements IUsuarioDAO {
 
-    public Usuario create(long id, String nombre) throws
+    public Usuario create(String name,int phone,String email, String password,String type) throws
             Exception {
         try {
             Connection conn = getConexion();
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO PERSONA VALUES( ?, ? )");
-            ps.setLong(1, id);
-            ps.setString(2, nombre);
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO Usuario VALUES( ?, ?, ?, ?, ? )");
+            ps.setString(1, name);
+            ps.setInt(2, phone );
+            ps.setString(3, email);
+            ps.setString(4, password);
+            ps.setString(5, type);
             ps.executeUpdate();
-            return new Usuario((int) id, nombre);
+            return new Usuario(name, phone, email, password, type);
         } catch (SQLException e) {
             throw new Exception(e);
         }
     }
 
-    public void delete(long id) throws Exception {
+    public void delete(String correo) throws Exception {
         // Similar: DELETE FROM sample WHERE id = ?
     }
 
-    public void update(long id, Usuario model) throws Exception {
+    public void update(String correo, String password) throws Exception {
         // Similar: UPDATE sample SET name = ?, data = ? WHERE id = ?
     }
 
     
-    public Usuario[] findByName(String nombre) throws Exception {
+    public Usuario[] findByName(String correo) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
-    public Usuario findById(long Id) throws Exception {
+    @Override
+    public Usuario findById(String correo) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Usuario create(String correo, String password) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 
    
 

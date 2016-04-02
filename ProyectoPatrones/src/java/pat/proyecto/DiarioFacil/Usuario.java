@@ -11,7 +11,7 @@ package pat.proyecto.DiarioFacil;
  */
 public class Usuario {
 
-    protected int id;
+    
     protected String name;
     protected int phone;
     protected String email;
@@ -21,8 +21,8 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id, String name, int phone, String email, String password, String tipo) {
-        this.id = id;
+    public Usuario( String name, int phone, String email, String password, String tipo) {
+       
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -30,9 +30,6 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    Usuario(int i, String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public String getTipo() {
         return tipo;
@@ -42,14 +39,7 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    
     public String getName() {
         return name;
     }

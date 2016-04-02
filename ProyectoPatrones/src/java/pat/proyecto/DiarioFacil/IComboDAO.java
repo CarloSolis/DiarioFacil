@@ -9,8 +9,6 @@ package pat.proyecto.DiarioFacil;
  *
  * @author Cali
  */
-public class Administrador extends Usuario{
-  
-    
+public interface IComboDAO {
     
 }

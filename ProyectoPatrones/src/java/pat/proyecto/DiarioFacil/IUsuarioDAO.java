@@ -14,13 +14,13 @@ import pat.proyecto.DiarioFacil.Usuario;
  */
 public interface IUsuarioDAO {
 
-    public Usuario create(long Id, String nombre) throws Exception;
+    public Usuario create(String correo, String password) throws Exception;
 
-    public void delete(long Id) throws Exception;
+    public void delete(String correo) throws Exception;
 
-    public void update(long Id, Usuario model) throws Exception;
+    public void update(String correo, String password) throws Exception;
 
     public Usuario[] findByName(String nombre) throws Exception;
 
-    public Usuario findById(long Id) throws Exception;
+    public Usuario findById(String correo) throws Exception;
 }
