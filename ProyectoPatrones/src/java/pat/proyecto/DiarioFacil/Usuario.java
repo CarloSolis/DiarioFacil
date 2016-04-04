@@ -11,7 +11,7 @@ package pat.proyecto.DiarioFacil;
  */
 public class Usuario {
 
-    
+    protected int id;
     protected String name;
     protected int phone;
     protected String email;
@@ -21,8 +21,8 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario( String name, int phone, String email, String password, String tipo) {
-       
+    public Usuario( int id,String name, String email, String password, String tipo, int phone) {
+        this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -30,7 +30,15 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     public String getTipo() {
         return tipo;
     }

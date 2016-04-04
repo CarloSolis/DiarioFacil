@@ -23,15 +23,15 @@ public class Provedor extends Usuario {
         this.cedulaJuridica = cedulaJuridica;
     }
 
-    public Provedor(String cedulaJuridica, int id, String name, int phone, String email, String password, String tipo) {
-        super(id, name, phone, email, password, tipo);
-        this.cedulaJuridica = cedulaJuridica;
-    }
-
-    public Provedor(String cedulaJuridica, int i, String nombre) {
-        super(i, nombre);
-        this.cedulaJuridica = cedulaJuridica;
-    }
+//    public Provedor(String cedulaJuridica, int id, String name, int phone, String email, String password, String tipo) {
+//        super(id, name, phone, email, password, tipo);
+//        this.cedulaJuridica = cedulaJuridica;
+//    }
+//
+//    public Provedor(String cedulaJuridica, int i, String nombre) {
+//        super(i, nombre);
+//        this.cedulaJuridica = cedulaJuridica;
+//    }
 
     public ArrayList<Product> getProductLst() {
         return productLst;

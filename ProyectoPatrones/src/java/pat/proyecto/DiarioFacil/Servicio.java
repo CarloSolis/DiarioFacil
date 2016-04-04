@@ -8,8 +8,6 @@ package pat.proyecto.DiarioFacil;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,9 +18,9 @@ public abstract class Servicio {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "localhost";
     private static final String PORT = "3306";
-    private static final String SID = "DiarioFacil";
+    private static final String SID = "diariofacil";
     private static final String USER = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "jordan";//"1234";
     private Connection conexion = null;
 
     public Servicio() {

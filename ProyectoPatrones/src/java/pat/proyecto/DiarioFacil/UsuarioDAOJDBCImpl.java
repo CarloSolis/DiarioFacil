@@ -18,7 +18,7 @@ import java.sql.SQLException;
  */
 public class UsuarioDAOJDBCImpl extends Servicio implements IUsuarioDAO {
 
-    public Usuario create(String name,int phone,String email, String password,String type) throws
+    public Usuario create(String name,int phone,String email, String password,String type,int id) throws
             Exception {
         try {
             Connection conn = getConexion();
@@ -28,8 +28,10 @@ public class UsuarioDAOJDBCImpl extends Servicio implements IUsuarioDAO {
             ps.setString(3, email);
             ps.setString(4, password);
             ps.setString(5, type);
+             ps.setInt(6, id );
+            
             ps.executeUpdate();
-            return new Usuario(name, phone, email, password, type);
+            return new Usuario(id,name,email, password, type,phone);
         } catch (SQLException e) {
             throw new Exception(e);
         }

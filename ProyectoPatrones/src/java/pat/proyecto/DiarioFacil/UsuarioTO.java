@@ -27,7 +27,7 @@ public class UsuarioTO implements Serializable {
     }
     
     public void update(Usuario persona) throws Exception {
-        servicio.UpDate(persona);
+        servicio.Update(persona);
     }
     
     public void delete(Usuario persona) throws Exception {

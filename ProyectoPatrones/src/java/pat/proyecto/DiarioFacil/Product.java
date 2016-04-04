@@ -9,7 +9,7 @@ package pat.proyecto.DiarioFacil;
  *
  * @author Jordan
  */
-public class Product implements IProducto{
+public class Product {
 
     private int id;
     private String name;
