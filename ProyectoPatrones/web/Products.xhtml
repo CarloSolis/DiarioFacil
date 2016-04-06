@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Diario Fácil</title>
+
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/custom.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+        <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'/>
+
+    </head>
+    <body data-spy="scroll" data-target="#myScrollspy" data-offset="50">
+
+        <div class = "navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class= "container">
+                <div class="navbar-header">
+                    <button type="button" class= "navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"> </span>
+                        <span class="icon-bar"> </span>
+                        <span class="icon-bar"> </span>
+                    </button>
+                    <a class=" navbar-brand" href="Index.xhtml"> Diario Fácil</a>
+                </div>
+                <div class= "navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-center">
+                        <li ><a href="Index.xhtml">Home</a></li>
+                        <li class="active"><a href="#">Productos</a></li>
+
+                    </ul>	
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="cart.xhtml" > <span class ="glyphicon glyphicon-shopping-cart"></span> Carrito</a></li>
+                        <li><a href="Report.xhtml" >Reporte de Compras</a></li>
+                        <li><a href="#contact" data-toggle="modal">Contacto</a></li>
+                        <li><a href="#signOut" data-toggle="modal">Cerrar Sesión</a></li>
+                        <li><a href="user.xhtml" ><span class ="glyphicon glyphicon-user"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="jumbotron" >
+                <h1> Catálogo de Productos</h1>
+
+                        </div>
+
+
+                        <div class="container" >
+                            <nav class="col-md-12" id="myScrollspy">
+                                <ul class="nav nav-pills">
+                                    <li><a href="#Lacteos"><h4>Lácteos</h4></a></li>
+                                    <li><a href="#Carnes"><h4>Carnes</h4></a></li>
+                                    <li><a href="#Bebidas"><h4>Bebidas</h4></a></li>
+                                </ul>
+                            </nav>
+
+                            <div class="col-md-12">
+                                <div id="Lacteos">
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-heading"><h4 >Lácteos</h4></div>
+
+                                        <div class="panel-body">
+
+                                            <div class="row ">
+
+                                                <div class="col-md-4">
+
+                                                    <br/><h3>Producto</h3>
+                                                        <a href="#" class="thumbnail">
+                                                            <img src="img/1.jpg"/></a>
+
+                                                        <div class="col-md-3"><h4 id="B" >Precio:</h4></div>
+                                                        <div class="col-md-9" ><h4 id="B" >$21.00</h4></div>													
+                                                        <div class="col-md-3"><h4 id="B" >Cantidad:</h4></div>
+
+                                                        <div class="col-md-3">
+                                                            <input type="number" class="form-control" value="1"  min="1" max="100"/>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <a class="btn btn-success" href="cart.xhtml">Agregar al carrito</a> 
+                                                        </div>
+                                                </div>	
+
+                                                <div class="col-md-4">
+
+                                                    <br/><h3>Producto</h3>
+                                                        <a href="#" class="thumbnail">
+                                                            <img src="img/1.jpg"/></a>
+
+                                                        <div class="col-md-3"><h4 id="B" >Precio:</h4></div>
+                                                        <div class="col-md-9" ><h4 id="B" >$21.00</h4></div>
+
+                                                        <div class="col-md-3"><h4 id="B" >Cantidad:</h4></div>
+
+                                                        <div class="col-md-3">
+                                                            <input type="number" class="form-control" value="1"  min="1" max="100"/>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <a class="btn btn-success" href="cart.xhtml">Agregar al carrito</a> 
+                                                        </div>
+                                                </div>	 	
+
+                                                <div class="col-md-4">
+
+                                                    <br/><h3>Producto</h3>
+                                                        <a href="#" class="thumbnail">
+                                                            <img src="img/1.jpg"/></a>
+
+                                                        <div class="col-md-3"><h4 id="B" >Precio:</h4></div>
+                                                        <div class="col-md-9" ><h4 id="B" >$21.00</h4></div>
+
+                                                        <div class="col-md-3"><h4 id="B" >Cantidad:</h4></div>
+
+                                                        <div class="col-md-3">
+                                                            <input type="number" class="form-control" value="1"  min="1" max="100"/>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <a class="btn btn-success" href="cart.xhtml">Agregar al carrito</a> 
+                                                        </div>
+                                                </div>	 	
+
+                                            </div>
+                                        </div>	 	
+                                    </div>
+                                </div>
+
+
+                                <div id="Carnes">
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-heading"><h4 >Carnes</h4></div>
+
+                                        <div class="panel-body">
+
+                                            <div class="row ">
+
+                                                <div class="col-md-4">
+
+                                                    <br/><h3>Producto</h3>
+                                                        <a href="#" class="thumbnail">
+                                                            <img src="img/1.jpg"/></a>
+
+                                                        <div class="col-md-3"><h4 id="B" >Precio:</h4></div>
+                                                        <div class="col-md-9" ><h4 id="B" >$21.00</h4></div>													
+                                                        <div class="col-md-3"><h4 id="B" >Cantidad:</h4></div>
+
+                                                        <div class="col-md-3">
+                                                            <input type="number" class="form-control" value="1"  min="1" max="100"/>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <a class="btn btn-success" href="cart.xhtml">Agregar al carrito</a> 
+                                                        </div>
+
+                                                </div>	
+
+
+
+
+
+                                            </div>
+                                        </div>	 	
+                                    </div>
+                                </div>
+
+                            </div>	
+                        </div>
+                        </div>
+
+                        <div class= "navbar navbar-default navbar-fixed-bottom" role="navigation">
+                            <div class="container">
+                                <div class="navbar-text pull-right">
+                                    <a href ="#"><i class="fa fa-facebook-square fa-3x"></i></a>
+                                    <a href ="#"><i class="fa fa-twitter-square fa-3x"></i></a>
+                                    <a href ="#"><i class="fa fa-google-plus-square fa-3x"></i></a>
+                                </div>
+                                <div class="navbar-text pull-left">
+                                    <p > &copy; Copyright 2016.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="contact" role="dialog" >
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class= "modal-header">
+                                        <h4> Contacto</h4>
+                                    </div>
+                                    <div class= "modal-body">
+                                        <p> Favor comunicarse a la siguiente dirección de correo: asd@gmail.com</p>
+                                                </div>
+                                                <div class= "modal-footer">
+                                                    <a class="btn btn-success" data-dismiss="modal">Cerrar</a>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                </div>
+
+                                                <div class="modal fade" id="signOut" role="dialog" >
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class= "modal-header">
+
+                                                            </div>
+                                                            <div class= "modal-body">
+                                                                <h4> ¿Está seguro que quiere cerrar sesión?</h4>
+                                                            </div>
+                                                            <div class= "modal-footer">
+
+                                                                <a class="btn btn-success" href="logIn.xhtml" >Sí</a>
+                                                                <a class="btn btn-primary" data-dismiss="modal">No</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+                                                <script src="js/bootstrap.min.js"></script>
+                                                </body>
+                                                </html>

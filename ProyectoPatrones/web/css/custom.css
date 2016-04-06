@@ -1,0 +1,300 @@
+.navbar-text> a{
+	color:inherit;
+	text-decoration: none;
+	
+}
+
+body{
+	background: #f1f1c1;
+	padding-top: 70px;
+	padding-bottom:100px;
+	
+}
+h1, h2,h4#B, h3,p1,p2,p3,p4 { 
+	
+	font-family: 'Oswald', sans-serif;
+	color:black;
+}
+
+h4{
+	font-family: 'Oswald', sans-serif;
+	
+}
+
+
+
+.form-control{
+		font-family: 'Oswald', sans-serif;
+	 color:black;
+} 
+
+.btn:hover{
+	cursor:pointer;
+	color: #f5fb05;
+}
+
+ .navbar-default {
+	background-color:#2C3E50;
+	border-color:#FFFFFF;
+	color: #FFFFFF;
+	font-family: 'Oswald', sans-serif;
+	font-size:      1.2em;
+	
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-text
+ {
+	color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand:hover,
+ .navbar-default .navbar-brand:focus
+ {
+	 
+	color: #f5fb05;
+	background-color: transparent;
+}
+
+.navbar-default .navbar-nav> li> a{
+	color: #FFFFFF;
+
+}
+
+.navbar-default .navbar-nav> .active> a,
+.navbar-default .navbar-nav> .active> a:hover,
+.navbar-default .navbar-nav> .active> a:focus
+{
+	color: #FFFFFF;
+	background-color:#1A242F;
+}
+
+.navbar-default .navbar-nav> li> a:hover,
+.navbar-default .navbar-nav> li> a:focus {
+	color: #f5fb05;
+	background-color: transparent;
+}
+
+
+.padding-top-10{
+	padding-top:10px;
+	
+}
+
+.bulletSpace{
+	padding-left:45px;
+			}
+
+.home {
+    margin-bottom: 10px;
+	max-height: 300px;
+	overflow: auto;
+	background-color:silver;
+}
+
+.report {
+    margin-bottom: 30px;
+	max-height: 200px;
+	overflow: auto;
+	background-color:silver;
+}
+
+
+
+.thumbnail{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.thumbnail img:hover{
+	transform: scale(1.1);
+}
+
+.thumbnail img{
+	transition: all 0.3s ease 0s;
+	width:100%;
+}
+
+.jumbotron{
+	background-color:#005500;
+	
+	color: #f1f1c1;
+	text-align:center;
+}
+
+ thead th{
+	background-color:#52858f;
+	font-size:      1.2em;
+	border-color: #FFFFFF;
+	color: #FFFFFF;
+	 text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	
+}
+tbody td,th {
+  background-color: #EEEEEE;
+  text-align:center;
+  font-family: 'Oswald', sans-serif;
+  border: 1px solid black;
+  color:black;
+}
+
+ ul.nav { text-align: center; }
+ 
+ .table th{
+	margin-bottom: 30px;
+	max-height: 200px;
+	overflow: auto;
+	background-color: #005500;
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	
+}
+
+ .table td{
+	margin-bottom: 30px;
+	max-height: 200px;
+	overflow: auto;
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	
+}
+ .panel-success {
+	
+	max-height: 350px;
+	overflow: auto;
+    background-color: silver;
+    border-color: #005500;
+	margin-bottom: 30px;
+	
+}
+
+.panel-default{
+	
+    background-color: silver;
+    border-color: #005500;
+	margin-bottom: 30px;
+	
+	
+}
+	.panel-default .panel-heading{
+		color:#005500;
+		text-align:center;
+		background-color: #d6ffd6;
+		
+	}
+
+	.nav-pills> li> a
+ {
+	color: white;
+	background-color: #005500;
+	font-family: 'Oswald', sans-serif;
+}
+	
+	
+.nav-pills> li> a:hover,
+.nav-pills> li> a:focus {
+	color: yellow;
+	background-color: #005500;
+}
+
+
+
+
+.btn-group{
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+}
+
+
+
+
+.btn-success{
+	background-color:#005500;
+	
+}
+ 
+#tableHistory th{
+	background-color: #005500;
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	
+	
+}
+
+#tableHistory td{
+
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	color:black;
+	overflow: auto;
+}
+
+
+
+#tableReport th{
+	background-color: #005500 ;
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	
+}
+
+#tableReport td{
+	
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	max-height: 150px;
+	overflow: auto;
+	
+}
+
+#tableHome th{
+	background-color:  #005500;
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	max-height: 100px;
+	overflow: auto;
+	
+}
+
+#tableHome td{
+	
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	max-height: 100px;
+	overflow: auto;
+	
+}
+
+#tableCart th{
+	
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	max-height: 100px;
+	overflow: auto;
+	
+}
+
+#tableCart td{
+	
+	text-align:center;
+	font-family: 'Oswald', sans-serif;
+	border: 1px solid black;
+	max-height: 100px;
+	overflow: auto;
+	
+}
+
+
+
