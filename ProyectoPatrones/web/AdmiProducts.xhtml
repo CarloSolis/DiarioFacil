@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <title>Diario Fácil</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="css/custom.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'/>
+  
+  </head>
+  <body data-spy="scroll" data-target="#myScrollspy" data-offset="50">
+  
+    <div class = "navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class= "container">
+			<div class="navbar-header">
+				<button type="button" class= "navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+				</button>
+				<a class=" navbar-brand" href="AdmiHome.xhtml"> Diario Fácil</a>
+			</div>
+				<div class= "navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-center">
+						<li ><a href="AdmiHome.xhtml">AdmiHome</a></li>
+						<li class="active"><a href="#">Agregar Productos</a></li>
+						
+					</ul>	
+					<ul class="nav navbar-nav navbar-right">
+						
+						<li><a href="AdmiReport.xhtml" >Reporte de Compras</a></li>
+						
+						<li><a href="#signOut" data-toggle="modal">Cerrar Sesión</a></li>
+						<li><a href="AdmiUser.xhtml" ><span class ="glyphicon glyphicon-user"></span></a></li>
+					</ul>
+				</div>
+		</div>
+	</div>
+		
+	<div class="container">
+		<div class="jumbotron" >
+			<h1> Catálogo de Productos</h1>
+			
+		</div>
+		
+		<div class="col-md-12">
+				<div id="Lacteos">
+					<div class="panel panel-default">
+		
+						<div class="panel-heading"><h4>Crear nueva categoría:</h4><input type="text" /> 
+							<div class="col-md-12"> <a class="btn btn-success" >Agregar categoría</a></div>
+						</div>
+		
+							<div class="panel-body">
+					
+								<div class="row ">
+       
+									<div class="col-md-10">
+				
+										<div class="col-md-12"><h4>Nombre del Producto:</h4><input type="text" /></div>
+										<div class="col-md-12"><input type="file"/></div>		
+										<div class="col-md-12"><h4>Precio:</h4><input type="text" /></div>
+										<div class="col-md-12"><h4>Cantidad disponible:</h4><input type="text" /></div>
+										<div class="col-md-12"><h4>Nombre de la categoría a la que pertenece:</h4><input type="text" /> </div>
+										<div class="col-md-12">
+										<a class="btn btn-success">Agregar el producto</a> 
+										</div>
+									
+									</div>	
+									
+								
+							</div>	 	
+					</div>
+				</div>
+			
+
+				
+			</div>	
+		</div>
+     </div>
+	
+	<div class= "navbar navbar-default navbar-fixed-bottom" role="navigation">
+		<div class="container">
+			<div class="navbar-text pull-right">
+			<a href ="#"><i class="fa fa-facebook-square fa-3x"></i></a>
+			<a href= "#"><i class="fa fa-twitter-square fa-3x"></i></a>
+			<a href ="#"><i class="fa fa-google-plus-square fa-3x"></i></a>
+			</div>
+			<div class="navbar-text pull-left">
+			<p > &copy; Copyright 2016.</p>
+			</div>
+		</div>
+	</div>
+
+	
+     <div class="modal fade" id="signOut" role="dialog" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class= "modal-header">
+				
+			</div>
+			<div class= "modal-body">
+				<h4> ¿Está seguro que quiere cerrar sesión?</h4>
+			</div>
+			<div class= "modal-footer">
+				
+				<a class="btn btn-success" href="logIn.xhtml" >Sí</a>
+				<a class="btn btn-primary" data-dismiss="modal">No</a>
+			</div>
+		</div>
+	</div>
+  </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ 
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
