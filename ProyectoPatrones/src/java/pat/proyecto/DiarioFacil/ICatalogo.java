@@ -11,6 +11,4 @@ package pat.proyecto.DiarioFacil;
  */
 public interface ICatalogo {
     
-    public abstract Product CrearProducto();
-    
 }
