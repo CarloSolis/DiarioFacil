@@ -9,14 +9,15 @@ package pat.proyecto.DiarioFacil;
  *
  * @author Cali
  */
-public class categoria implements ICatalogo{
+public class Categoria implements ICatalogo{
  
-    private String categoria;
-
+    private String nombreCategoria;
+        
     @Override
-    public Product CrearProducto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Product Crearproducto() {
+        return new Product();
     }
+
     
     
 }

@@ -97,7 +97,7 @@ public class ServicioProducto extends Servicio {
                 //Provedor provider = rs.getObject("PROVEDOR");
                 int minimunStock = rs.getInt("STOCKMIN");
                 int actualStock = rs.getInt("STOCKACTUAL");
-                listaUsuarios.add(new Usuario(id, nombre, description, price, provider, minimunStock, actualStock));
+          //      listaUsuarios.add(new Usuario(id, nombre, description, price, provider, minimunStock, actualStock));
             }
 
         } catch (SQLException ex) {

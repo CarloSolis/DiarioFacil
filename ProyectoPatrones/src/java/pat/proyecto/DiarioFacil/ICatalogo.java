@@ -10,5 +10,6 @@ package pat.proyecto.DiarioFacil;
  * @author Cali
  */
 public interface ICatalogo {
-    
+
+    public abstract Product Crearproducto();
 }
