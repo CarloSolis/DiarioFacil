@@ -13,7 +13,7 @@ import pat.proyecto.DiarioFacil.Usuario;
 
 /**
  *
- * @author laboratorio
+ * @author Cali
  */
 public class UsuarioTO implements Serializable {
 

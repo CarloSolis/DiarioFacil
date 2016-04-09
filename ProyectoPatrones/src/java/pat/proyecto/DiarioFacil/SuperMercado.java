@@ -17,16 +17,21 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 
 public class SuperMercado {
+
     ArrayList<Provedor> providersList = new ArrayList<>();
     ArrayList<Cliente> clientsList = new ArrayList<>();
     ArrayList<Product> productsList = new ArrayList<>();
     //Admins uno o mas?
     private Administrador admin;
+    private Categoria categoria;
+
+    public SuperMercado(ICatalogo catalogo) {
+    categoria.Crearproducto();
+        
+    }
 
     public SuperMercado() {
     }
-
-    
 
     public Administrador getAdmin() {
         return admin;
@@ -35,5 +40,5 @@ public class SuperMercado {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
-    
+
 }

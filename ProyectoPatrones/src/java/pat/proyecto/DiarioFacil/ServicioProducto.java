@@ -10,15 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author Cali
  */
-@ManagedBean(name = "SProducto", eager = true)
-@RequestScoped
 
 public class ServicioProducto extends Servicio {
 
@@ -36,7 +32,7 @@ public class ServicioProducto extends Servicio {
             pstmt.setString(1, producto.getName());
             pstmt.setString(2, producto.getDescription());
             pstmt.setInt(3, producto.getPrice());
-            pstmt.setObject(4, producto.getProvider());
+            pstmt.setInt(4, producto.getProvider().getId()); //APUESTA
             pstmt.setInt(5, producto.getMinimunStock());
             pstmt.setInt(6, producto.getActualStock());
 
@@ -87,9 +83,9 @@ public class ServicioProducto extends Servicio {
         }
     }
 
-    public List<Usuario> buscaTodos() throws Exception {
+    public List<Product> buscaTodos() throws Exception {
         this.conectar();
-        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        ArrayList<Product> lstProduct = new ArrayList<>();
 
         try {
             PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCA_TODOS);
@@ -99,10 +95,10 @@ public class ServicioProducto extends Servicio {
                 String nombre = rs.getString("NOMBRE");
                 String description = rs.getString("DESCRIPCION");
                 int price = rs.getInt("PRECIO");
-                //Provedor provider = rs.getObject("PROVEDOR");
+                int provider = rs.getInt("PROVEDOR");
                 int minimunStock = rs.getInt("STOCKMIN");
                 int actualStock = rs.getInt("STOCKACTUAL");
-          //      listaUsuarios.add(new Usuario(id, nombre, description, price, provider, minimunStock, actualStock));
+                //listaUsuarios.add(new Usuario(id, nombre, description, price, provider, minimunStock, actualStock));
             }
 
         } catch (SQLException ex) {
@@ -112,7 +108,7 @@ public class ServicioProducto extends Servicio {
             this.desconectar();
         }
 
-        return listaUsuarios;
+        return lstProduct;
     }
 
 }
