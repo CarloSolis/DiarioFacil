@@ -21,7 +21,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario( int id,String name, String email, String password, String tipo, int phone) {
+    public Usuario(int id, String name, String email, String password, String tipo, int phone) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -38,7 +38,6 @@ public class Usuario {
         this.id = id;
     }
 
-    
     public String getTipo() {
         return tipo;
     }
@@ -47,7 +46,6 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    
     public String getName() {
         return name;
     }
@@ -78,6 +76,16 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Memento saveToMemento() {
+
+        System.err.println("Guardando Memento....");
+        return new Memento(name);
+    }
+
+    public void restoreFromMemento(Memento m) {
+        name = m.getEstado();
     }
 
 }
