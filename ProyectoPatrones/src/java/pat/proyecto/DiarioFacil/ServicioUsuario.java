@@ -10,11 +10,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author laboratorio
+ * @author Cali
  */
+@ManagedBean(name = "SUsuario", eager = true)
+@RequestScoped
+
 public class ServicioUsuario extends Servicio {
 
     private static final String INSERTAR = "INSERT INTO USUARIO (NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO) VALUES(?,?,?,?,?)";

@@ -6,11 +6,16 @@
 package pat.proyecto.DiarioFacil;
 
 import java.util.ArrayList;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author Cali
  */
+@ManagedBean(name = "Provedor", eager = true)
+@RequestScoped
+
 public class Provedor extends Usuario {
 
     private ArrayList<Product> productLst = new ArrayList<>();

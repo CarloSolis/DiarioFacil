@@ -6,10 +6,14 @@
 package pat.proyecto.DiarioFacil;
 
 import java.util.ArrayList;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
+@ManagedBean(name = "Carro", eager = true)
+@RequestScoped
 /**
  *
- * @author Usuario
+ * @author Cali
  */
 public class Carro {
 
@@ -52,12 +56,11 @@ public class Carro {
     public void setTotalWODiscount(double totalWODiscount) {
         this.totalWODiscount = totalWODiscount;
     }
-    
-     public void addItem(Item item) {
+
+    public void addItem(Item item) {
         this.itemList.add(item);
 
     }
-    
 
     public double total() {
         for (Item i : this.itemList) {
@@ -66,5 +69,4 @@ public class Carro {
         return totalWODiscount;
     }
 
-   
 }

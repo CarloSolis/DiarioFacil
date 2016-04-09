@@ -6,11 +6,16 @@
 package pat.proyecto.DiarioFacil;
 
 import java.util.ArrayList;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author Cali
  */
+@ManagedBean(name = "SuperMercado", eager = true)
+@RequestScoped
+
 public class SuperMercado {
     ArrayList<Provedor> providersList = new ArrayList<>();
     ArrayList<Cliente> clientsList = new ArrayList<>();

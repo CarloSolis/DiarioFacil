@@ -5,10 +5,16 @@
  */
 package pat.proyecto.DiarioFacil;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
 /**
  *
- * @author Jordan
+ * @author Cali
  */
+@ManagedBean(name = "Producto", eager = true)
+@RequestScoped
+
 public class Product implements IProducto{
 
     private int id;
