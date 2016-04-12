@@ -39,17 +39,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class ="glyphicon glyphicon-user"></span></span>
-                                        <input type="text" name="name" class="form-control" placeholder="Ingrese su nombre " aria-describedby="basic-addon1" required="true" />
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="lastName">Apellido</label>
-
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class ="glyphicon glyphicon-user"></span></span>
-                                        <input type="text" name="lastName" class="form-control" placeholder="Ingrese su apellido " aria-describedby="basic-addon1" required="true"/>
+                                        <input type="text" name="name"  class="form-control" placeholder="Ingrese su nombre " aria-describedby="basic-addon1" required="true" value="#{nuevoUsuario.name}" />
                                     </div>
 
                                 </div>
@@ -59,7 +49,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class ="glyphicon glyphicon-envelope"></span></span>
-                                        <input type="email" name="email" class="form-control" placeholder="Ingrese su dirección de correo " aria-describedby="basic-addon1" required="true"/>
+                                        <input type="email" name="email" class="form-control" placeholder="Ingrese su dirección de correo " aria-describedby="basic-addon1" required="true"  value="#{nuevoUsuario.email}"/>
                                     </div>
 
                                 </div>
@@ -67,7 +57,7 @@
                                     <label for="inputPassword">Contraseña</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class ="glyphicon glyphicon-star"></span></span>
-                                        <input type="password" name="password" class="form-control" placeholder="Ingrese su contraseña" aria-describedby="basic-addon1" required="true"/>
+                                        <input type="password" name="password" class="form-control" placeholder="Ingrese su contraseña" aria-describedby="basic-addon1" required="true"  value="#{nuevoUsuario.password}"/>
                                     </div>
                                 </div>
 
@@ -75,32 +65,28 @@
                                     <label for="inputPhone">Teléfono</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class ="glyphicon glyphicon-phone"></span></span>
-                                        <input type="text" name="phone" class="form-control" placeholder="Ingrese su número de teléfono" aria-describedby="basic-addon1" required="true"/>
+                                        <input type="text" name="phone" class="form-control" placeholder="Ingrese su número de teléfono" aria-describedby="basic-addon1" required="true"  value="#{nuevoUsuario.phone}"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="user">Tipo de Usuario</label>
-                                    <div class="button-group">
+                                    <div class="button-group" >
                                         <label class="radio-inline">
-                                            <input name="radioGroup" id="radio1" value="option1" type="radio"/> Administrador
+                                            <input name="radioGroup" id="radio1" value="#{nuevoUsuario.tipo}" type="radio"/> Administrador
                                         </label>
                                         <label class="radio-inline">
-                                            <input name="radioGroup" id="radio2" value="option2" checked="" type="radio"/> Cliente
+                                            <input name="radioGroup" id="radio2" value="#{nuevoUsuario.tipo}" checked="" type="radio"/> Cliente
                                         </label>
                                         <label class="radio-inline">
-                                            <input name="radioGroup" id="radio3" value="option3" type="radio"/> Proveedor
+                                            <input name="radioGroup" id="radio3" value="#{nuevoUsuario.tipo}" type="radio"/> Proveedor
                                         </label>
                                     </div>
                                 </div>
 
-                      
-
-
-
                         <a href="logIn.xhtml" class="btn btn-primary">Atrás</a>
-                        <a href="#signUp" data-toggle="modal" class="btn btn-success">Registrar</a>
-
+                       <button type="button" class="btn btn-success" action="#{nuevoUsuario.insertarUsuario()}"> Registrar</button> 
+                        
                         </form>
 
 
