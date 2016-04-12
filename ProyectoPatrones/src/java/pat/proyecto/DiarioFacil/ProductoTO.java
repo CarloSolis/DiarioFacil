@@ -30,6 +30,12 @@ public class ProductoTO {
         servicio.Delete(product);
     }
     
+     public Product buscaProducto(String nombre) throws Exception {
+        servicio.buscaPorNombre(nombre);
+    
+     return new Product();
+     }
+    
     public List<Product> buscaTodos() throws Exception {
         return servicio.buscaTodos();
     }
