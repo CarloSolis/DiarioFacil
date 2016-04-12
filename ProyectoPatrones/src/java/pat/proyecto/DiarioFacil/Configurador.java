@@ -40,12 +40,10 @@ public class Configurador {
 
         try {
             for (Product p : SP.buscaTodos()) {
-
-                lstProducto.add(new Product(p.getId(), p.getName(), p.getActualStock(), p.getPrice()));
-
+                lstProducto.add(new Product(p.getId(), p.getName(), p.getDescription(), p.getPrice(), p.getProvider(), p.getActualStock(), p.getMinimunStock()));
             }
 
-        } catch (MyException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 

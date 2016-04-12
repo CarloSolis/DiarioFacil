@@ -15,13 +15,13 @@ import java.util.List;
  *
  * @author Cali
  */
-
 public class ServicioProducto extends Servicio {
 
     private static final String INSERTAR = "INSERT INTO USUARIO (NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL) VALUES(?,?,?,?,?,?)";
     private static final String DELETE = "DELETE FROM USUARIO WHERE ID = (?)";
     private static final String UPDATE = "UPDATE USUARIO SET NOMBRE =(?),DESCRIPCION=(?),PRECIO=(?),PROVEDOR=(?),STOCKMIN=(?),STOCKACTUAL=(?) WHERE ID=(?)";
     private static final String BUSCA_TODOS = "SELECT ID, NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL FROM PRODUCTO";
+    private static final String BUSCA_UNO = "SELECT ID, NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL FROM PRODUCTO WHERE NOMBRE = ?";
 
     public void insertar(Product producto) throws Exception {
 
@@ -109,6 +109,37 @@ public class ServicioProducto extends Servicio {
         }
 
         return lstProduct;
+    }
+
+    public Product buscaPorNombre(String nombre) throws Exception {
+        this.conectar();
+        Product product = null;
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCA_UNO);
+            
+            pstmt.setString(1, nombre);
+            
+            
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("ID");
+                String nombreBBDD = rs.getString("NOMBRE");
+                String description = rs.getString("DESCRIPCION");
+                int price = rs.getInt("PRECIO");
+                int provider = rs.getInt("PROVEDOR");
+                int minimunStock = rs.getInt("STOCKMIN");
+                int actualStock = rs.getInt("STOCKACTUAL");
+                product = new Product(id, nombreBBDD, description, price, provider, minimunStock, actualStock);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo buscar el registro.");
+        } finally {
+            this.desconectar();
+        }
+
+        return product;
     }
 
 }
