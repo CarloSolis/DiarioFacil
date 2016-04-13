@@ -22,8 +22,15 @@ public class Cliente extends Usuario{
     private Boolean frequent;
     private String gender;
     private int numberOfPurchase;
-
+    private int idUser;
     public Cliente() {
+    }
+
+    public Cliente(String LastName, int numberOfPurchase, int idUser, int id, String name, String email, String password, String tipo, int phone) {
+        super(id, name, email, password, tipo, phone);
+        this.LastName = LastName;
+        this.numberOfPurchase = numberOfPurchase;
+        this.idUser = idUser;
     }
 
     public Cliente(String LastName, Boolean frequent, String gender, int numberOfPurchase) {
@@ -73,4 +80,13 @@ public class Cliente extends Usuario{
     public void setNumberOfPurchase(int numberOfPurchase) {
         this.numberOfPurchase = numberOfPurchase;
     }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+    
 }

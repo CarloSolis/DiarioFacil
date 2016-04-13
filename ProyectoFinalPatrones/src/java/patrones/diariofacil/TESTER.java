@@ -22,15 +22,19 @@ public class TESTER {
         
         ServicioUsuario SU = new ServicioUsuario();
         Usuario cliente = new Cliente();
-       
-        
+
         try {
-        cliente.setName("Jordan");
-        cliente.setEmail("Jordan@gmail.com");
-        cliente.setPassword("qwerty");
-        cliente.setPhone(12);
-        cliente.setTipo("cliente");
-            SU.insertar(cliente);
+            cliente.setName("Jordan");
+            cliente.setEmail("Jordan@gmail.com");
+            cliente.setPassword("qwerty");
+            cliente.setPhone(12);
+            cliente.setTipo("cliente");
+            
+            ((Cliente) cliente).setLastName("Wong");
+            ((Cliente) cliente).setNumberOfPurchase(2);
+            ((Cliente) cliente).setIdUser(7);
+
+            SU.insertar((Cliente) cliente);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

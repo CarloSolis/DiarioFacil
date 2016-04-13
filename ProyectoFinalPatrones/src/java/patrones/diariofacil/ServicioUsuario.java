@@ -19,6 +19,7 @@ import java.util.List;
 public class ServicioUsuario extends Servicio {
 
     private static final String INSERTAR = "INSERT INTO USUARIO (NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO) VALUES(?,?,?,?,?)";
+     private static final String INSERTARCLIENTE = "INSERT INTO CLIENTE (APELLIDO,NUMEROCOMPRAS,IDUSUARIO) VALUES(?,?,?)";
     private static final String DELETE = "DELETE FROM USUARIO WHERE ID = (?)";
      private static final String UPDATE = "UPDATE USUARIO SET NOMBRE =(?),EMAIL=(?),PASSWORD=(?),TIPO=(?),TELEFONO(?) WHERE ID=(?)";
     private static final String BUSCA_TODOS = "SELECT ID, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO FROM USUARIO";
@@ -40,7 +41,21 @@ public class ServicioUsuario extends Servicio {
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new Exception("No se pudo insertar el registro.");
-        } finally {
+        } 
+         
+           try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(INSERTARCLIENTE);
+           
+            pstmt.setString(1, ((Cliente)persona).getLastName());
+            pstmt.setInt(2, ((Cliente)persona).getNumberOfPurchase());
+            pstmt.setInt(3, ((Cliente)persona).getIdUser());
+            
+            pstmt.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo insertar el registro s.");
+        }
+        finally {
             this.desconectar();
         }
     }
