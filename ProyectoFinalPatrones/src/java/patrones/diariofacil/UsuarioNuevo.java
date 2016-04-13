@@ -16,8 +16,6 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 
 //hola
-
-
 public class UsuarioNuevo {
 
     private int id;
@@ -26,19 +24,26 @@ public class UsuarioNuevo {
     private String email;
     private String password;
     private String tipo;
+    private String LastName;
+    private int idUser;
+    private int numberOfPurchase;
 
     public void insertarUsuario() {
 
-        ServicioUsuario SU = new ServicioUsuario();
+      ServicioUsuario SU = new ServicioUsuario();
         Usuario cliente = new Cliente();
-
+        
         try {
             cliente.setName(this.name);
             cliente.setEmail(this.email);
             cliente.setPassword(this.password);
             cliente.setPhone(this.phone);
-            cliente.setTipo(this.tipo);
-            SU.insertar(cliente);
+            cliente.setTipo(this.tipo);            
+            ((Cliente) cliente).setLastName(LastName);
+            ((Cliente) cliente).setNumberOfPurchase(numberOfPurchase);
+            ((Cliente) cliente).setIdUser(idUser);
+            
+            SU.insertar((Cliente) cliente);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -92,6 +97,29 @@ public class UsuarioNuevo {
         this.tipo = tipo;
     }
 
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    public int getNumberOfPurchase() {
+        return numberOfPurchase;
+    }
+
+    public void setNumberOfPurchase(int numberOfPurchase) {
+        this.numberOfPurchase = numberOfPurchase;
+    }
     
-    
+
 }
