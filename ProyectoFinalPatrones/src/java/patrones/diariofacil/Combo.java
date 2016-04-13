@@ -17,9 +17,24 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 
 public class Combo {
- 
+
     private String nombre;
-    private ArrayList<Product> lstProducto = new ArrayList<>(); 
+    private ArrayList<Product> lstProducto = new ArrayList<>();
+
+    public void insertCombo() {
+
+        ServicioCombo SU = new ServicioCombo();
+        Combo cb = new Combo();
+
+        try {
+            cb.setNombre(this.nombre);
+            cb.setLstProducto(this.lstProducto);
+
+            SU.insertar(cb);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public Combo() {
     }
@@ -43,6 +58,5 @@ public class Combo {
     public void setLstProducto(ArrayList<Product> lstProducto) {
         this.lstProducto = lstProducto;
     }
-  
-    
+
 }

@@ -9,6 +9,6 @@ package patrones.diariofacil;
  *
  * @author Cali
  */
-public class ServicioCombo {
-    
+public class ServicioCombo extends Servicio {
+
 }

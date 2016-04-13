@@ -25,6 +25,25 @@ public class Product implements IProducto{
     private int minimunStock;
     private int actualStock;
 
+    
+    public void insertProduct() {
+
+        ServicioProducto SU = new ServicioProducto();
+        Product p = new Product();
+
+        try {
+            p.setName(this.name);
+            p.setDescription(this.description);
+            p.setPrice(this.price);
+            p.setProvider(this.provider);
+            p.setMinimunStock(this.minimunStock);
+            SU.insertar(p);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    
     public Product() {
     }
 
