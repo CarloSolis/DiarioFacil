@@ -15,6 +15,9 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean(name = "nuevoUsuario")
 @ViewScoped
 
+//hola
+
+
 public class UsuarioNuevo {
 
     private int id;
