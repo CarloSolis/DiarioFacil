@@ -30,7 +30,7 @@ public class Combo {
             cb.setNombre(this.nombre);
             cb.setLstProducto(this.lstProducto);
 
-            SU.insertar(cb);
+            //SU.insertar(cb);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
