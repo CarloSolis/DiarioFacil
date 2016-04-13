@@ -11,6 +11,6 @@ package patrones.diariofacil;
  */
 public class Administrador extends Usuario{
   
-    
+    //hola
     
 }
