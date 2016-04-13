@@ -17,7 +17,7 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 
 public class Combo {
-
+private int Id;
     private String nombre;
     private ArrayList<Product> lstProducto = new ArrayList<>();
 
@@ -37,6 +37,19 @@ public class Combo {
     }
 
     public Combo() {
+    }
+
+    public Combo(int Id, String nombre) {
+        this.Id = Id;
+        this.nombre = nombre;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public Combo(String nombre) {
