@@ -50,7 +50,7 @@ public class UsuarioNuevo {
 
       ServicioUsuario SU = new ServicioUsuario();
         Usuario cliente = new Cliente();
-        
+      
          try {
             for (Usuario usuario : SU.buscaTodos()) {
                 idUser=usuario.getId();

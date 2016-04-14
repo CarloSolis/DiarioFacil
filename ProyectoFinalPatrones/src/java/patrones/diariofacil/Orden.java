@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package patrones.diariofacil;
+
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
 public class Orden {
 
     private Date fecha = new Date();
-    private int total;
+    private double total;
     private int billNumber;
     private Carro cart;
 
@@ -32,11 +33,11 @@ public class Orden {
         this.fecha = fecha;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
@@ -56,4 +57,7 @@ public class Orden {
         this.cart = cart;
     }
 
+    public void total() {
+        total = cart.getTotal();
+    }
 }
