@@ -5,6 +5,8 @@
  */
 package patrones.diariofacil;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -12,7 +14,7 @@ import javax.faces.bean.RequestScoped;
  *
  * @author Cali
  */
-@ManagedBean(name = "Producto", eager = true)
+@ManagedBean(name = "Product", eager = true)
 @RequestScoped
 
 public class Product implements IProducto {
@@ -42,6 +44,13 @@ public class Product implements IProducto {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public List<Product>getAllProducts() throws Exception{
+        ServicioProducto SU = new ServicioProducto();
+        List<Product> lstProduct;
+        lstProduct = SU.buscaTodos();
+        return lstProduct;
     }
 
     public Product() {

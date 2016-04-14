@@ -12,7 +12,7 @@ import javax.faces.bean.ViewScoped;
  *
  * @author Jordan
  */
-@ManagedBean(name = "nuevoUsuario")
+@ManagedBean(name = "nuevoUsuario", eager=true)
 @ViewScoped
 
 //hola
@@ -24,7 +24,7 @@ public class UsuarioNuevo {
     private String email;
     private String password;
     private String tipo;
-    private String LastName;
+    private String lastName;
     private int idUser;
     private int numberOfPurchase;
 
@@ -39,7 +39,7 @@ public class UsuarioNuevo {
             cliente.setPassword(this.password);
             cliente.setPhone(this.phone);
             cliente.setTipo(this.tipo);            
-            ((Cliente) cliente).setLastName(LastName);
+            ((Cliente) cliente).setLastName(lastName);
             ((Cliente) cliente).setNumberOfPurchase(numberOfPurchase);
             ((Cliente) cliente).setIdUser(idUser);
             
@@ -98,11 +98,11 @@ public class UsuarioNuevo {
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String LastName) {
-        this.LastName = LastName;
+        this.lastName = LastName;
     }
 
     public int getIdUser() {
