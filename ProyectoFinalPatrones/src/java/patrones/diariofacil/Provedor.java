@@ -36,6 +36,7 @@ public class Provedor extends Usuario {
             provedor.setPhone(this.phone);
             provedor.setTipo(this.tipo);
             ((Provedor) provedor).setCedulaJuridica(cedulaJuridica);
+            ((Provedor) provedor).setProductLst(productLst);//???
             ((Provedor) provedor).setIdUser(idUser);
             
             SU.insertar((Provedor) provedor);
