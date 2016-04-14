@@ -19,7 +19,6 @@ public class Cliente extends Usuario{
 
     private String LastName;
     private ArrayList<Orden> purchaseLst = new ArrayList<>();
-    private Boolean frequent;
     private String gender;
     private int numberOfPurchase;
     private int idUser;
@@ -35,7 +34,6 @@ public class Cliente extends Usuario{
             cliente.setPassword(this.password);
             cliente.setPhone(this.phone);
             cliente.setTipo(this.tipo);            
-            ((Cliente) cliente).setFrequent(frequent);//para que? se puede quitar
             ((Cliente) cliente).setLastName(LastName);
             ((Cliente) cliente).setNumberOfPurchase(numberOfPurchase);
             ((Cliente) cliente).setIdUser(idUser);
@@ -49,20 +47,13 @@ public class Cliente extends Usuario{
     public Cliente() {
     }
 
-    public Cliente(String LastName, int numberOfPurchase, int idUser, int id, String name, String email, String password, String tipo, int phone) {
-        super(id, name, email, password, tipo, phone);
+    public Cliente(String LastName, String gender, int numberOfPurchase, int idUser) {
         this.LastName = LastName;
+        this.gender = gender;
         this.numberOfPurchase = numberOfPurchase;
         this.idUser = idUser;
     }
 
-    public Cliente(String LastName, Boolean frequent, String gender, int numberOfPurchase) {
-
-        this.LastName = LastName;
-        this.frequent = frequent;
-        this.gender = gender;
-        this.numberOfPurchase = numberOfPurchase;
-    }
 
     public String getLastName() {
         return LastName;
@@ -78,14 +69,6 @@ public class Cliente extends Usuario{
 
     public void setPurchaseLst(ArrayList<Orden> purchaseLst) {
         this.purchaseLst = purchaseLst;
-    }
-
-    public Boolean getFrequent() {
-        return frequent;
-    }
-
-    public void setFrequent(Boolean frequent) {
-        this.frequent = frequent;
     }
 
     public String getGender() {
