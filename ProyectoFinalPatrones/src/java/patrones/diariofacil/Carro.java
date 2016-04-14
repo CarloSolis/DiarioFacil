@@ -19,8 +19,7 @@ public class Carro {
 
     Cliente client;
     ArrayList<Item> itemList = new ArrayList<>();
-    int total = 0;
-    double totalWODiscount;
+    double total = 0;
 
     public Carro() {
     }
@@ -41,21 +40,14 @@ public class Carro {
         this.itemList = itemList;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
-    public double getTotalWODiscount() {
-        return totalWODiscount;
-    }
-
-    public void setTotalWODiscount(double totalWODiscount) {
-        this.totalWODiscount = totalWODiscount;
-    }
 
     public void addItem(Item item) {
         this.itemList.add(item);
@@ -64,9 +56,9 @@ public class Carro {
 
     public double total() {
         for (Item i : this.itemList) {
-            totalWODiscount = totalWODiscount + i.FinalTotal();
+            total= i.FinalTotal();
         }
-        return totalWODiscount;
+        return total;
     }
 
 }

@@ -15,7 +15,7 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "Producto", eager = true)
 @RequestScoped
 
-public class Product implements IProducto{
+public class Product implements IProducto {
 
     private int id;
     private String name;
@@ -24,10 +24,10 @@ public class Product implements IProducto{
     private Provedor provider;
     private int minimunStock;
     private int actualStock;
+    private Product product;
 
-    
     public void insertProduct() {
-
+        Caretaker ct = new Caretaker();
         ServicioProducto SU = new ServicioProducto();
         Product p = new Product();
 
@@ -38,20 +38,18 @@ public class Product implements IProducto{
             p.setProvider(this.provider);
             p.setMinimunStock(this.minimunStock);
             SU.insertar(p);
+            ct.addMemento(p.saveToMemento());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    
-    
+
     public Product() {
     }
 
-    public Product(int id, String name, String description,  int price, Provedor provider, int minimunStock, int actualStock) {
-        this.id = id;
+    public Product(String name, String description, int price, Provedor provider, int minimunStock, int actualStock) {
         this.name = name;
         this.description = description;
-        
         this.price = price;
         this.provider = provider;
         this.minimunStock = minimunStock;
@@ -78,6 +76,14 @@ public class Product implements IProducto{
         this.name = name;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -85,7 +91,7 @@ public class Product implements IProducto{
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public int getPrice() {
         return price;
     }
@@ -117,7 +123,17 @@ public class Product implements IProducto{
     public void setActualStock(int actualStock) {
         this.actualStock = actualStock;
     }
-    
+
+    public Memento saveToMemento() {
+
+        System.err.println("Guardando Memento....");
+        return new Memento(product);
+    }
+
+    public void restoreFromMemento(Memento m) {
+        product = m.getProducto();
+    }
+
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + '}';
