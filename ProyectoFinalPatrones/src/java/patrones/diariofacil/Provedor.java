@@ -21,22 +21,33 @@ public class Provedor extends Usuario {
     private ArrayList<Product> productLst = new ArrayList<>();
     private String cedulaJuridica;
 
+    public void insertarProvesor() {
+
+        ServicioUsuario SU = new ServicioUsuario();
+        Usuario provedor = new Provedor();
+
+        try {
+            
+            provedor.setName(this.name);
+            provedor.setEmail(this.email);
+            provedor.setPassword(this.password);
+            provedor.setPhone(this.phone);
+            provedor.setTipo(this.tipo);
+            ((Provedor) provedor).setCedulaJuridica(cedulaJuridica);
+            ((Provedor) provedor).setProductLst(productLst);
+
+            SU.insertar((Provedor) provedor);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public Provedor() {
     }
 
     public Provedor(String cedulaJuridica) {
         this.cedulaJuridica = cedulaJuridica;
     }
-
-//    public Provedor(String cedulaJuridica, int id, String name, int phone, String email, String password, String tipo) {
-//        super(id, name, phone, email, password, tipo);
-//        this.cedulaJuridica = cedulaJuridica;
-//    }
-//
-//    public Provedor(String cedulaJuridica, int i, String nombre) {
-//        super(i, nombre);
-//        this.cedulaJuridica = cedulaJuridica;
-//    }
 
     public ArrayList<Product> getProductLst() {
         return productLst;
@@ -53,6 +64,5 @@ public class Provedor extends Usuario {
     public void setCedulaJuridica(String cedulaJuridica) {
         this.cedulaJuridica = cedulaJuridica;
     }
-    
-    
+
 }

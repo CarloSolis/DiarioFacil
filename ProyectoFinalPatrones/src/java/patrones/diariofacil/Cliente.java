@@ -23,6 +23,29 @@ public class Cliente extends Usuario{
     private String gender;
     private int numberOfPurchase;
     private int idUser;
+    
+    public void insertarUsuario() {
+
+      ServicioUsuario SU = new ServicioUsuario();
+        Usuario cliente = new Cliente();
+        
+        try {
+            cliente.setName(this.name);
+            cliente.setEmail(this.email);
+            cliente.setPassword(this.password);
+            cliente.setPhone(this.phone);
+            cliente.setTipo(this.tipo);            
+            ((Cliente) cliente).setFrequent(frequent);
+            ((Cliente) cliente).setLastName(LastName);
+            ((Cliente) cliente).setNumberOfPurchase(numberOfPurchase);
+            ((Cliente) cliente).setIdUser(idUser);
+            
+            SU.insertar((Cliente) cliente);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public Cliente() {
     }
 
