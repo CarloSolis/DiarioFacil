@@ -28,36 +28,10 @@ public class UsuarioNuevo {
     private int idUser;
     private int numberOfPurchase;
 
-    public int idUsuario() {
-      
-        ServicioUsuario SU = new ServicioUsuario();
-        Usuario User = new Usuario();
-
-        try {
-            for (Usuario usuario : SU.buscaTodos()) {
-                if (usuario.getName().equals(this.name) && usuario.getTipo().equals(tipo)) {
-                    id = usuario.getId();
-                }
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return id;
-    }
-    
-    
     public void insertarUsuario() {
 
       ServicioUsuario SU = new ServicioUsuario();
         Usuario cliente = new Cliente();
-      
-         try {
-            for (Usuario usuario : SU.buscaTodos()) {
-                idUser=usuario.getId();
-            } 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
         
         try {
             cliente.setName(this.name);
