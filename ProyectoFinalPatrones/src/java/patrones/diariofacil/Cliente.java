@@ -35,7 +35,7 @@ public class Cliente extends Usuario{
             cliente.setPassword(this.password);
             cliente.setPhone(this.phone);
             cliente.setTipo(this.tipo);            
-            ((Cliente) cliente).setFrequent(frequent);
+            ((Cliente) cliente).setFrequent(frequent);//para que? se puede quitar
             ((Cliente) cliente).setLastName(LastName);
             ((Cliente) cliente).setNumberOfPurchase(numberOfPurchase);
             ((Cliente) cliente).setIdUser(idUser);

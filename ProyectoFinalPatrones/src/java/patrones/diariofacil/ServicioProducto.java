@@ -17,9 +17,9 @@ import java.util.List;
  */
 public class ServicioProducto extends Servicio {
 
-    private static final String INSERTAR = "INSERT INTO USUARIO (NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL) VALUES(?,?,?,?,?,?)";
-    private static final String DELETE = "DELETE FROM USUARIO WHERE ID = (?)";
-    private static final String UPDATE = "UPDATE USUARIO SET NOMBRE =(?),DESCRIPCION=(?),PRECIO=(?),PROVEDOR=(?),STOCKMIN=(?),STOCKACTUAL=(?) WHERE ID=(?)";
+    private static final String INSERTAR = "INSERT INTO PRODUCTO (NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL) VALUES(?,?,?,?,?,?)";
+    private static final String DELETE = "DELETE FROM PRODUCTO WHERE ID = (?)";
+    private static final String UPDATE = "UPDATE PRODUCTO SET NOMBRE =(?),DESCRIPCION=(?),PRECIO=(?),PROVEDOR=(?),STOCKMIN=(?),STOCKACTUAL=(?) WHERE ID=(?)";
     private static final String BUSCA_TODOS = "SELECT ID, NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL FROM PRODUCTO";
     private static final String BUSCA_UNO = "SELECT ID, NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL FROM PRODUCTO WHERE NOMBRE = ?";
 

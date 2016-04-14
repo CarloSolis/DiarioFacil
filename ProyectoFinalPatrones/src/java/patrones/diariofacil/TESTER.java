@@ -22,22 +22,47 @@ public class TESTER {
         
         ServicioUsuario SU = new ServicioUsuario();
         Usuario cliente = new Cliente();
-
-        try {
-            cliente.setName("Jordan");
-            cliente.setEmail("Jordan@gmail.com");
-            cliente.setPassword("qwerty");
-            cliente.setPhone(12);
-            cliente.setTipo("cliente");
+        Usuario proveedor = new Provedor();
+//        try {
+//            cliente.setName("Jordan");
+//            cliente.setEmail("Jordan@gmail.com");
+//            cliente.setPassword("qwerty");
+//            cliente.setPhone(12);
+//            cliente.setTipo("cliente");
+//            
+//            ((Cliente) cliente).setLastName("Wong");
+//            ((Cliente) cliente).setNumberOfPurchase(2);
+//            ((Cliente) cliente).setIdUser(8);
+//
+//            SU.insertar((Cliente) cliente);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+        
+//         try {
+//            proveedor.setName("Jordan");
+//            proveedor.setEmail("Jordan@gmail.com");
+//            proveedor.setPassword("qwerty");
+//            proveedor.setPhone(12);
+//            proveedor.setTipo("proveedor");
+//            
+//            ((Provedor) proveedor).setCedulaJuridica("123456");
+//            ((Provedor) proveedor).setIdUser(14);
+//
+//            SU.insertar((Provedor) proveedor);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+        
+          try {
             
-            ((Cliente) cliente).setLastName("Wong");
-            ((Cliente) cliente).setNumberOfPurchase(2);
-            ((Cliente) cliente).setIdUser(7);
-
-            SU.insertar((Cliente) cliente);
+           ((Provedor) proveedor).setIdUser(12);
+            ((Provedor) proveedor).setId(12);
+            SU.Delete((Provedor) proveedor);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        
     }
     
 }
