@@ -18,7 +18,7 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 
 public class Product implements IProducto {
-
+//hola
     private int id;
     private String name;
     private String description;
