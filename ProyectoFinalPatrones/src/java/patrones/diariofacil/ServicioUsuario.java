@@ -20,11 +20,13 @@ public class ServicioUsuario extends Servicio {
     private static final String INSERTAR = "INSERT INTO USUARIO (NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO) VALUES(?,?,?,?,?)";
     private static final String INSERTARCLIENTE = "INSERT INTO CLIENTE (APELLIDO,NUMEROCOMPRAS,IDUSUARIO) VALUES(?,?,?)";
     private static final String INSERTARPROVEEDOR = "INSERT INTO PROVEEDOR (CEDULAJURIDICA,USUARIO_IDUSUARIO) VALUES(?,?)";
-    private static final String DELETE = "DELETE FROM USUARIO WHERE ID = (?)";
+    private static final String DELETE = "DELETE FROM USUARIO WHERE IDUSUARIO = (?)";
     private static final String DELETECLIENTE = "DELETE FROM CLIENTE WHERE IDUSUARIO = (?)";
     private static final String DELETEPROVEEDOR = "DELETE FROM PROVEEDOR WHERE USUARIO_IDUSUARIO = (?)";
-    private static final String UPDATE = "UPDATE USUARIO SET NOMBRE =(?),EMAIL=(?),PASSWORD=(?),TIPO=(?),TELEFONO(?) WHERE ID=(?)";
-    private static final String BUSCA_TODOS = "SELECT ID, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO FROM USUARIO";
+    private static final String UPDATE = "UPDATE USUARIO SET NOMBRE =(?),EMAIL=(?),PASSWORD=(?),TIPO=(?),TELEFONO=(?) WHERE IDUSUARIO=(?)";
+    private static final String UPDATECLIENTE = "UPDATE CLIENTE SET APELLIDO =(?) WHERE IDUSUARIO=(?)";
+     private static final String UPDATEPROVEEDOR = "UPDATE PROVEEDOR SET CEDULAJURIDICA =(?) WHERE USUARIO_IDUSUARIO=(?)";
+    private static final String BUSCA_TODOS = "SELECT IDUSUARIO, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO FROM USUARIO";
 
     public void insertar(Usuario persona) throws Exception {
 
@@ -43,69 +45,52 @@ public class ServicioUsuario extends Servicio {
             ex.printStackTrace();
             throw new Exception("No se pudo insertar el registro.");
         }
+    }
 
-        if (persona.getTipo().equals("cliente")) {
-            try {
-                PreparedStatement pstmt = this.getConexion().prepareStatement(INSERTARCLIENTE);
+    public void insertarCliente(Cliente persona) throws Exception {
 
-                pstmt.setString(1, ((Cliente) persona).getLastName());
-                pstmt.setInt(2, ((Cliente) persona).getNumberOfPurchase());
-                pstmt.setInt(3, ((Cliente) persona).getIdUser());
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(INSERTARCLIENTE);
 
-                pstmt.execute();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                throw new Exception("No se pudo insertar el cliente.");
-               
-            } finally {
-                    this.desconectar();}}
-            
-        else if (persona.getTipo().equals("proveedor")) {
-                try {
-                    PreparedStatement pstmt = this.getConexion().prepareStatement(INSERTARPROVEEDOR);
+            pstmt.setString(1, ((Cliente) persona).getLastName());
+            pstmt.setInt(2, ((Cliente) persona).getNumberOfPurchase());
+            pstmt.setInt(3, ((Cliente) persona).getIdUser());
 
-                    pstmt.setString(1, ((Provedor) persona).getCedulaJuridica());
-                    pstmt.setInt(2, ((Provedor) persona).getIdUser());
-                   
-                    pstmt.execute();
-                    
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                    throw new Exception("No se pudo insertar el proveedor.");
-                }  finally {
-                    this.desconectar();
-               
-            }
-            
-                }
-        
+            pstmt.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo insertar el cliente.");
+
+        } finally {
+            this.desconectar();
+
+        }
+    }
+
+    public void insertarProveedor(Provedor persona) throws Exception {
+
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(INSERTARPROVEEDOR);
+
+            pstmt.setString(1, ((Provedor) persona).getCedulaJuridica());
+            pstmt.setInt(2, ((Provedor) persona).getIdUser());
+
+            pstmt.execute();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo insertar el proveedor.");
+        } finally {
+            this.desconectar();
+
+        }
+
     }
 
     public void Delete(Usuario persona) throws Exception {
 
         this.conectar();
-        if (persona.getTipo().equals("cliente")) {
-         try {
-            PreparedStatement pstmt = this.getConexion().prepareStatement(DELETECLIENTE);
-            pstmt.setInt(1,((Cliente) persona).getIdUser());
-            pstmt.executeUpdate();
 
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            throw new Exception("No se pudo eliminar el registro.");
-        }}
-         
-          else if (persona.getTipo().equals("proveedor")) {
-         try {
-            PreparedStatement pstmt = this.getConexion().prepareStatement(DELETEPROVEEDOR);
-            pstmt.setInt(1,((Provedor) persona).getIdUser());
-            pstmt.executeUpdate();
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            throw new Exception("No se pudo eliminar el registro.");
-        }}
-         
         try {
             PreparedStatement pstmt = this.getConexion().prepareStatement(DELETE);
             pstmt.setInt(1, persona.getId());
@@ -113,9 +98,35 @@ public class ServicioUsuario extends Servicio {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("No se pudo eliminar el registro.");
+            throw new Exception("No se pudo eliminar el usuario.");
         } finally {
             this.desconectar();
+        }
+    }
+
+    public void DeleteCliente(Cliente persona) throws Exception {
+
+        this.conectar();
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(DELETECLIENTE);
+            pstmt.setInt(1, ((Cliente) persona).getIdUser());
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo eliminar el cliente.");
+        }
+    }
+
+    public void DeleteProveedor(Provedor persona) throws Exception {
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(DELETEPROVEEDOR);
+            pstmt.setInt(1, ((Provedor) persona).getIdUser());
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo eliminar el proveedor.");
         }
     }
 
@@ -127,18 +138,49 @@ public class ServicioUsuario extends Servicio {
             pstmt.setString(1, persona.getName());
             pstmt.setString(2, persona.getEmail());
             pstmt.setString(3, persona.getPassword());
-            pstmt.setString(4, persona.getTipo());
-            pstmt.setInt(5, persona.getId());
-            pstmt.setInt(6, persona.getPhone());
-
+            pstmt.setString(4, persona.getTipo());         
+            pstmt.setInt(5, persona.getPhone());
+            pstmt.setInt(6, persona.getId());
+            
             pstmt.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("No se pudo actualizar el registro.");
+            throw new Exception("No se pudo actualizar el usuario.");
         } finally {
             this.desconectar();
         }
     }
+    
+    public void UpdateCliente(Cliente persona) throws Exception {
+
+        this.conectar();
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(UPDATECLIENTE);
+            pstmt.setString(1, persona.getLastName());
+            pstmt.setInt(2, persona.getIdUser());
+          
+            pstmt.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo actualizar el cliente.");
+       
+    }}
+    
+      public void UpdateProveedor(Provedor persona) throws Exception {
+
+        this.conectar();
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(UPDATEPROVEEDOR);
+            pstmt.setString(1, persona.getCedulaJuridica());
+            pstmt.setInt(2, persona.getIdUser());
+          
+            pstmt.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo actualizar el proveedor.");
+       
+    }}
+    
 
     public List<Usuario> buscaTodos() throws Exception {
         this.conectar();
@@ -148,7 +190,7 @@ public class ServicioUsuario extends Servicio {
             PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCA_TODOS);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("ID");
+                int id = rs.getInt("IDUSUARIO");
                 String nombre = rs.getString("NOMBRE");
                 String email = rs.getString("EMAIL");
                 String password = rs.getString("PASSWORD");

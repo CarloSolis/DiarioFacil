@@ -20,7 +20,7 @@ public abstract class Servicio {
     private static final String PORT = "3306";
     private static final String SID = "mydb";
     private static final String USER = "root";
-    private static final String PASSWORD ="1234";// "jordan";
+    private static final String PASSWORD = "jordan";//"1234";
     private Connection conexion = null;
 
     public Servicio() {

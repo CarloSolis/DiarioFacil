@@ -19,26 +19,52 @@ public class Cliente extends Usuario{
 
     private String LastName;
     private ArrayList<Orden> purchaseLst = new ArrayList<>();
-    private String gender;
+   
     private int numberOfPurchase;
     private int idUser;
     
+    public int idUsuario() {
+
+        ServicioUsuario SU = new ServicioUsuario();
+        Usuario User = new Usuario();
+
+        try {
+            for (Usuario usuario : SU.buscaTodos()) {
+                if (usuario.getEmail().equals(this.email)) {
+                    id = usuario.getId();
+                     System.out.println(id);
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return id;
+    }
+    
     public void insertarUsuario() {
 
-      ServicioUsuario SU = new ServicioUsuario();
-        Usuario cliente = new Cliente();
+       ServicioUsuario SU = new ServicioUsuario();
+        Usuario user = new Usuario();
         
         try {
-            cliente.setName(this.name);
-            cliente.setEmail(this.email);
-            cliente.setPassword(this.password);
-            cliente.setPhone(this.phone);
-            cliente.setTipo(this.tipo);            
-            ((Cliente) cliente).setLastName(LastName);
-            ((Cliente) cliente).setNumberOfPurchase(numberOfPurchase);
-            ((Cliente) cliente).setIdUser(idUser);
+            user.setName(this.name);
+            user.setEmail(this.email);
+            user.setPassword(this.password);
+            user.setPhone(this.phone);
+            user.setTipo(this.tipo);
+
+            SU.insertar(user);
+            idUser = idUsuario();
             
-            SU.insertar((Cliente) cliente);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        try {
+             user = new Cliente();
+            ((Cliente) user).setLastName(LastName);
+            ((Cliente) user).setNumberOfPurchase(numberOfPurchase);
+            ((Cliente) user).setIdUser(idUser);
+              SU.insertarCliente(((Cliente) user));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -47,9 +73,9 @@ public class Cliente extends Usuario{
     public Cliente() {
     }
 
-    public Cliente(String LastName, String gender, int numberOfPurchase, int idUser) {
+    public Cliente(String LastName, int numberOfPurchase, int idUser) {
         this.LastName = LastName;
-        this.gender = gender;
+    
         this.numberOfPurchase = numberOfPurchase;
         this.idUser = idUser;
     }
@@ -69,14 +95,6 @@ public class Cliente extends Usuario{
 
     public void setPurchaseLst(ArrayList<Orden> purchaseLst) {
         this.purchaseLst = purchaseLst;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public int getNumberOfPurchase() {

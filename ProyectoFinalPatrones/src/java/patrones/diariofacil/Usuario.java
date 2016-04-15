@@ -5,6 +5,8 @@
  */
 package patrones.diariofacil;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Cali
@@ -17,7 +19,8 @@ public class Usuario {
     protected String email;
     protected String password;
     protected String tipo;
-
+    
+    
     public Usuario() {
     }
 
@@ -87,5 +90,11 @@ public class Usuario {
     public void restoreFromMemento(Memento m) {
         name = m.getEstado();
     }
-
+    
+  
+      @Override
+            public String toString() {
+    
+                return "nombre: " + name  + " email: " + email ;
+}
 }
