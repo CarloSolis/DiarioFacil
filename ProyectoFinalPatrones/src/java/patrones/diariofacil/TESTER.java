@@ -24,22 +24,23 @@ public class TESTER {
         Usuario cliente = new Cliente();
         Usuario proveedor = new Provedor();
         Caretaker ct = new Caretaker();
-//        try {
-//            cliente.setName("Jordan");
-//            cliente.setEmail("Jordan@gmail.com");
-//            cliente.setPassword("qwerty");
-//            cliente.setPhone(12);
-//            cliente.setTipo("cliente");
-//            
-//            ((Cliente) cliente).setLastName("Wong");
-//            ((Cliente) cliente).setNumberOfPurchase(2);
-//            ((Cliente) cliente).setIdUser(8);
-//
-//            SU.insertar((Cliente) cliente);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        
+
+        try {
+            cliente.setName("Jordan");
+            cliente.setEmail("Jordan@gmail.com");
+            cliente.setPassword("qwerty");
+            cliente.setPhone(12);
+            cliente.setTipo("cliente");
+
+            ((Cliente) cliente).setLastName("Wong");
+            ((Cliente) cliente).setNumberOfPurchase(3);
+            ((Cliente) cliente).setIdUser(8);
+
+            SU.insertar((Cliente) cliente);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
 //         try {
 //            proveedor.setName("Jordan");
 //            proveedor.setEmail("Jordan@gmail.com");
@@ -63,7 +64,23 @@ public class TESTER {
 //        } catch (Exception ex) {
 //            ex.printStackTrace();
 //        }
-//        
+//      
+//        ServicioProducto SP = new ServicioProducto();
+//        Product p = new Product();
+//
+//        try {
+//            p.setName("CocaCola");
+//            p.setDescription("800ml");
+//            p.setPrice(12000);
+//            p.setMinimunStock(150);
+//            p.setActualStock(900);
+//            p.setProvider(null);
+//
+//            SP.insertar(p);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+
         Product product = new Product("Coca~Cola", "Bebida 800ml", 950, (Provedor) proveedor, 15, 15);
         product.setProduct(product);
         ct.addMemento(product.saveToMemento());

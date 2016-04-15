@@ -17,20 +17,12 @@ import javax.faces.bean.RequestScoped;
  */
 public class Carro {
 
-    Cliente client;
+
     ArrayList<Item> itemList = new ArrayList<>();
     double total = 0;
 
     public Carro() {
-    }
-
-    public Cliente getClient() {
-        return client;
-    }
-
-    public void setClient(Cliente client) {
-        this.client = client;
-    }
+    } 
 
     public ArrayList<Item> getItemList() {
         return itemList;
