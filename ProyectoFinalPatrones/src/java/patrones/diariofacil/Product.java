@@ -65,8 +65,8 @@ public class Product implements IProducto {
         this.actualStock = actualStock;
     }
 
-    Product(int id, String nombre, String description, int price, int provider, int minimunStock, int actualStock) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Product(int id, String nombre, String description, int price, int minimunStock, int actualStock) {
+        //Aqui iba un provider en los parametros
     }
 
     public int getId() {

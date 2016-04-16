@@ -86,7 +86,7 @@ public class ServicioProducto extends Servicio {
     public List<Product> buscaTodos() throws Exception {
         this.conectar();
         ArrayList<Product> lstProduct = new ArrayList<>();
-
+            //Aqui jalaba un provider
         try {
             PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCA_TODOS);
             ResultSet rs = pstmt.executeQuery();
@@ -95,10 +95,9 @@ public class ServicioProducto extends Servicio {
                 String nombre = rs.getString("NOMBRE");
                 String description = rs.getString("DESCRIPCION");
                 int price = rs.getInt("PRECIO");
-                int provider = rs.getInt("PROVEDOR");
                 int minimunStock = rs.getInt("STOCKMIN");
                 int actualStock = rs.getInt("STOCKACTUAL");
-                lstProduct.add(new Product(id, nombre, description, price, provider, minimunStock, actualStock));
+                lstProduct.add(new Product(id, nombre, description, price, minimunStock, actualStock));
             }
 
         } catch (SQLException ex) {
@@ -126,10 +125,9 @@ public class ServicioProducto extends Servicio {
                 String nombreBBDD = rs.getString("NOMBRE");
                 String description = rs.getString("DESCRIPCION");
                 int price = rs.getInt("PRECIO");
-                int provider = rs.getInt("PROVEDOR");
                 int minimunStock = rs.getInt("STOCKMIN");
                 int actualStock = rs.getInt("STOCKACTUAL");
-                product = new Product(id, nombreBBDD, description, price, provider, minimunStock, actualStock);
+                product = new Product(id, nombreBBDD, description, price, minimunStock, actualStock);
             }
 
         } catch (SQLException ex) {
