@@ -6,14 +6,14 @@
 package patrones.diariofacil;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author miker.sb7
  */
 @ManagedBean(name = "Redirect", eager = true)
-@SessionScoped
+@RequestScoped
 public class RedirectBean {
     
     public String redirectToSignup(){
@@ -31,4 +31,5 @@ public class RedirectBean {
     public String redirectToAddProducts(){
         return "faces/AddProduct";
     }
+
 }

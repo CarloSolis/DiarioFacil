@@ -18,9 +18,9 @@ public abstract class Servicio {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "localhost";
     private static final String PORT = "3306";
-    private static final String SID = "diariofacil"; //"mydb";
+    private static final String SID = "mydb";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";//"jordan";//"1234";
+    private static final String PASSWORD = "jordan";//"1234";
     private Connection conexion = null;
 
     public Servicio() {

@@ -12,10 +12,10 @@ import javax.faces.bean.ViewScoped;
  *
  * @author Jordan
  */
-@ManagedBean(name = "nuevoUsuario", eager=true)
+@ManagedBean(name = "nuevoUsuario", eager = true)
 @ViewScoped
 
-//hola
+
 public class UsuarioNuevo {
 
     private int id;
@@ -27,26 +27,65 @@ public class UsuarioNuevo {
     private String lastName;
     private int idUser;
     private int numberOfPurchase;
+    private String cedulaJuridica;
+   
+    
+    public int idUsuario() {
 
-    public void insertarUsuario() {
+        ServicioUsuario SU = new ServicioUsuario();
+        Usuario User = new Usuario();
 
-      ServicioUsuario SU = new ServicioUsuario();
-        Usuario cliente = new Cliente();
-        
         try {
-            cliente.setName(this.name);
-            cliente.setEmail(this.email);
-            cliente.setPassword(this.password);
-            cliente.setPhone(this.phone);
-            cliente.setTipo(this.tipo);            
-            ((Cliente) cliente).setLastName(lastName);
-            ((Cliente) cliente).setNumberOfPurchase(numberOfPurchase);
-            ((Cliente) cliente).setIdUser(idUser);
-            
-            SU.insertar((Cliente) cliente);
+            for (Usuario usuario : SU.buscaTodos()) {
+                if (usuario.getEmail().equals(this.email)) {
+                    id = usuario.getId();
+                     System.out.println(id);
+                }
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return id;
+    }
+
+    public void insertarUsuario() {
+
+        ServicioUsuario SU = new ServicioUsuario();
+        Usuario user = new Usuario();
+        
+        try {
+            user.setName(this.name);
+            user.setEmail(this.email);
+            user.setPassword(this.password);
+            user.setPhone(this.phone);
+            user.setTipo(this.tipo);
+
+            SU.insertar(user);
+            idUser = idUsuario();
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        if(tipo.equals("Cliente")){
+        try {
+             user = new Cliente();
+            ((Cliente) user).setLastName(lastName);
+            ((Cliente) user).setNumberOfPurchase(numberOfPurchase);
+            ((Cliente) user).setIdUser(idUser);
+              SU.insertarCliente(((Cliente) user));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }}
+        
+        else if(tipo.equals("Proveedor")){
+        try {
+             user = new Provedor();
+            ((Provedor) user).setCedulaJuridica(cedulaJuridica);
+            ((Provedor) user).setIdUser(idUser);
+              SU.insertarProveedor(((Provedor) user));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }}
     }
 
     public int getId() {
@@ -120,6 +159,5 @@ public class UsuarioNuevo {
     public void setNumberOfPurchase(int numberOfPurchase) {
         this.numberOfPurchase = numberOfPurchase;
     }
-    
 
 }

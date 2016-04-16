@@ -20,26 +20,49 @@ public class Provedor extends Usuario {
 
     private ArrayList<Product> productLst = new ArrayList<>();
     private String cedulaJuridica;
-   private int idUser;
-   
+    private int idUser;
+
+    public int idUsuario() {
+
+        ServicioUsuario SU = new ServicioUsuario();
+        Usuario User = new Usuario();
+
+        try {
+            for (Usuario usuario : SU.buscaTodos()) {
+                if (usuario.getEmail().equals(this.email)) {
+                    id = usuario.getId();
+                    System.out.println(id);
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return id;
+    }
 
     public void insertarProveedor() {
 
         ServicioUsuario SU = new ServicioUsuario();
-        Usuario provedor = new Provedor();
+        Usuario user = new Usuario();
 
         try {
-            
-            provedor.setName(this.name);
-            provedor.setEmail(this.email);
-            provedor.setPassword(this.password);
-            provedor.setPhone(this.phone);
-            provedor.setTipo(this.tipo);
-            ((Provedor) provedor).setCedulaJuridica(cedulaJuridica);
-            ((Provedor) provedor).setProductLst(productLst);//???
-            ((Provedor) provedor).setIdUser(idUser);
-            
-            SU.insertar((Provedor) provedor);
+            user.setName(this.name);
+            user.setEmail(this.email);
+            user.setPassword(this.password);
+            user.setPhone(this.phone);
+            user.setTipo(this.tipo);
+
+            SU.insertar(user);
+            idUser = idUsuario();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        try {
+            user = new Provedor();
+            ((Provedor) user).setCedulaJuridica(cedulaJuridica);
+            ((Provedor) user).setIdUser(idUser);
+            SU.insertarProveedor(((Provedor) user));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -75,5 +98,5 @@ public class Provedor extends Usuario {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
-    
+
 }

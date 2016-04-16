@@ -64,7 +64,7 @@ public class Product implements IProducto {
         this.minimunStock = minimunStock;
         this.actualStock = actualStock;
     }
-
+    
     public Product(int id, String nombre, String description, int price, int minimunStock, int actualStock) {
         //Aqui iba un provider en los parametros
     }
