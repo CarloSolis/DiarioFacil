@@ -33,6 +33,15 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    public Usuario(int id, String name, int phone, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+    }
+    
+
     public int getId() {
         return id;
     }

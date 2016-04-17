@@ -5,8 +5,10 @@
  */
 package patrones.diariofacil;
 import java.util.ArrayList;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -41,7 +43,10 @@ public class Cliente extends Usuario{
         return id;
     }
     
-    public void insertarUsuario() {
+
+    
+    
+    public void insertarCliente() {
 
        ServicioUsuario SU = new ServicioUsuario();
         Usuario user = new Usuario();
@@ -51,7 +56,7 @@ public class Cliente extends Usuario{
             user.setEmail(this.email);
             user.setPassword(this.password);
             user.setPhone(this.phone);
-            user.setTipo(this.tipo);
+            user.setTipo("Cliente");
 
             SU.insertar(user);
             idUser = idUsuario();
@@ -69,6 +74,80 @@ public class Cliente extends Usuario{
             ex.printStackTrace();
         }
     }
+    
+    public void ActualizarCliente(){
+    
+        ServicioUsuario SU = new ServicioUsuario();
+        Usuario user = new Usuario();
+        Usuario cliente = new Cliente();
+     try {
+         
+         id = user.getId();
+         
+            user.setName(this.name);
+            user.setEmail(this.email);
+            user.setPassword(this.password);
+            user.setTipo("Cliente");
+            user.setPhone(this.phone);
+           
+            user.setId(id);
+         
+            SU.Update(user);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+     
+      try {
+            ((Cliente) cliente).setLastName(this.LastName);
+            ((Cliente) cliente).setIdUser(id);
+            SU.UpdateCliente(((Cliente) cliente));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+          
+    }
+    
+    public String tipoUsuario() {
+
+        ServicioUsuario SU = new ServicioUsuario();
+        Usuario User = new Usuario();
+
+        try {
+            for (Usuario usuario : SU.buscaTodos()) {
+                if (usuario.getEmail().equals(this.email)&&usuario.getPassword().equals(this.password)) {
+                    tipo = usuario.getTipo();
+                     System.out.println(tipo);
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return tipo;
+    }
+    
+    public String validarUsuario(){
+    
+        String pag="";
+        if (tipoUsuario().equals("Cliente")) {
+          
+            pag= "UserHome";
+        } else {
+         
+         if(tipoUsuario().equals("Administrador")){
+            pag= "AdmiHome";}
+        
+         else {
+              FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR,"Usuario o contraseña incorrecto ",""));
+             pag= "Login";
+             }
+     }
+        return pag;
+    }
+    
+    
+    
+    
     
     public Cliente() {
     }

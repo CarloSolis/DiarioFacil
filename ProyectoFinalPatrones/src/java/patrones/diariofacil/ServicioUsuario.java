@@ -27,7 +27,9 @@ public class ServicioUsuario extends Servicio {
     private static final String UPDATECLIENTE = "UPDATE CLIENTE SET APELLIDO =(?) WHERE IDUSUARIO=(?)";
      private static final String UPDATEPROVEEDOR = "UPDATE PROVEEDOR SET CEDULAJURIDICA =(?) WHERE USUARIO_IDUSUARIO=(?)";
     private static final String BUSCA_TODOS = "SELECT IDUSUARIO, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO FROM USUARIO";
-
+    private static final String BUSCARPORTIPO = "SELECT IDUSUARIO, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO FROM USUARIO WHERE TIPO=(?)";
+  
+    
     public void insertar(Usuario persona) throws Exception {
 
         this.conectar();
@@ -208,5 +210,34 @@ public class ServicioUsuario extends Servicio {
 
         return listaUsuarios;
     }
+    
+    public Usuario buscaPorTipo(Usuario user) throws Exception {
+        this.conectar();
+        Usuario us=new Usuario() ;
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCARPORTIPO);
+            
+            pstmt.setString(1, user.getTipo());
+                     
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+               int id = rs.getInt("IDUSUARIO");
+                String nombre = rs.getString("NOMBRE");
+                String email = rs.getString("EMAIL");
+                String password = rs.getString("PASSWORD");
+                int telefono = rs.getInt("TELEFONO");
+                us = new Usuario(id, nombre, telefono, email, password);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo buscar el usuario.");
+        } finally {
+            this.desconectar();
+        }
+
+        return us;
+    }
+
 
 }

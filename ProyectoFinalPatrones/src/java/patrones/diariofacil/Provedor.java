@@ -50,7 +50,7 @@ public class Provedor extends Usuario {
             user.setEmail(this.email);
             user.setPassword(this.password);
             user.setPhone(this.phone);
-            user.setTipo(this.tipo);
+            user.setTipo("Proveedor");
 
             SU.insertar(user);
             idUser = idUsuario();

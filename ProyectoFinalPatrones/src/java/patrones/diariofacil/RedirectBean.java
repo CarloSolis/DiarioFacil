@@ -16,10 +16,23 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class RedirectBean {
     
+     public String redirectToAdmiHome(){
+        return "AdmiHome";
+    }
+     
+      public String redirectToUserHome(){
+        return "UserHome";
+    }
+      public String redirectToUpdateClient(){
+        return "UpdateClient";
+    }
+    
     public String redirectToSignup(){
         return "Signup";
     }
-    
+      public String redirectToSignUpProvider(){
+        return "SignUpProvider";
+    }
     public String redirectToLogin(){
         return "Login";
     }
@@ -31,5 +44,7 @@ public class RedirectBean {
     public String redirectToAddProducts(){
         return "faces/AddProduct";
     }
+    
+    
 
 }
