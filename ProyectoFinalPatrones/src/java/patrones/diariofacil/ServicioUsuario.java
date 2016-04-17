@@ -23,7 +23,7 @@ public class ServicioUsuario extends Servicio {
     private static final String DELETE = "DELETE FROM USUARIO WHERE IDUSUARIO = (?)";
     private static final String DELETECLIENTE = "DELETE FROM CLIENTE WHERE IDUSUARIO = (?)";
     private static final String DELETEPROVEEDOR = "DELETE FROM PROVEEDOR WHERE USUARIO_IDUSUARIO = (?)";
-    private static final String UPDATE = "UPDATE USUARIO SET NOMBRE =(?),EMAIL=(?),PASSWORD=(?),TIPO=(?),TELEFONO=(?) WHERE IDUSUARIO=(?)";
+    private static final String UPDATE = "UPDATE USUARIO SET NOMBRE =(?),PASSWORD=(?),TIPO=(?),TELEFONO=(?) WHERE IDUSUARIO=(?)";
     private static final String UPDATECLIENTE = "UPDATE CLIENTE SET APELLIDO =(?) WHERE IDUSUARIO=(?)";
      private static final String UPDATEPROVEEDOR = "UPDATE PROVEEDOR SET CEDULAJURIDICA =(?) WHERE USUARIO_IDUSUARIO=(?)";
     private static final String BUSCA_TODOS = "SELECT IDUSUARIO, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO FROM USUARIO";
@@ -138,11 +138,11 @@ public class ServicioUsuario extends Servicio {
         try {
             PreparedStatement pstmt = this.getConexion().prepareStatement(UPDATE);
             pstmt.setString(1, persona.getName());
-            pstmt.setString(2, persona.getEmail());
-            pstmt.setString(3, persona.getPassword());
-            pstmt.setString(4, persona.getTipo());         
-            pstmt.setInt(5, persona.getPhone());
-            pstmt.setInt(6, persona.getId());
+          
+            pstmt.setString(2, persona.getPassword());
+            pstmt.setString(3, persona.getTipo());         
+            pstmt.setInt(4, persona.getPhone());
+            pstmt.setInt(5, persona.getId());
             
             pstmt.execute();
         } catch (SQLException ex) {
@@ -166,7 +166,11 @@ public class ServicioUsuario extends Servicio {
             ex.printStackTrace();
             throw new Exception("No se pudo actualizar el cliente.");
        
-    }}
+    }
+         finally {
+            this.desconectar();
+        }
+    }
     
       public void UpdateProveedor(Provedor persona) throws Exception {
 
@@ -181,7 +185,11 @@ public class ServicioUsuario extends Servicio {
             ex.printStackTrace();
             throw new Exception("No se pudo actualizar el proveedor.");
        
-    }}
+    } finally {
+            this.desconectar();
+        }
+      
+      }
     
 
     public List<Usuario> buscaTodos() throws Exception {

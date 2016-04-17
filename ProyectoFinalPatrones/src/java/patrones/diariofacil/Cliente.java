@@ -80,18 +80,15 @@ public class Cliente extends Usuario{
         ServicioUsuario SU = new ServicioUsuario();
         Usuario user = new Usuario();
         Usuario cliente = new Cliente();
-     try {
-         
          id = user.getId();
+     try {
          
             user.setName(this.name);
             user.setEmail(this.email);
             user.setPassword(this.password);
             user.setTipo("Cliente");
-            user.setPhone(this.phone);
-           
-            user.setId(id);
-         
+            user.setPhone(this.phone);        
+            user.setId(id);        
             SU.Update(user);
         } catch (Exception ex) {
             ex.printStackTrace();

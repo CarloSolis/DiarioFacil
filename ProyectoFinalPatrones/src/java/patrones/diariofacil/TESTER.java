@@ -27,15 +27,7 @@ public class TESTER {
         Caretaker ct = new Caretaker();
 
         
-        try {
-            user.setTipo("Cliente");
-            SU.buscaPorTipo(user);
-                System.out.println("ID: " + user.getId() + " email: " + user.getEmail() + " Nombre: " + user.getName());
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-
-        }
+     
         
 //        try {
 //            user.setName("Jordan");
@@ -96,26 +88,26 @@ public class TESTER {
 //       } catch (Exception ex) {
 //            ex.printStackTrace();
 //        }
-        /////////////Update////
-//        try {
-//            user.setName("Jordan SA");
-//            user.setEmail("JordanSA@gmail.com");
-//            user.setPassword("asdd");
-//            user.setTipo("Proveedor");
-//            user.setPhone(987);
-//            user.setId(42);
-//            SU.Update(user);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
-//        try {
-//            ((Provedor) proveedor).setCedulaJuridica("12345678");
-//
-//            ((Provedor) proveedor).setIdUser(42);
-//            SU.UpdateProveedor((Provedor) proveedor);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
+        ///////////Update////
+        try {
+            user.setName("Jordan SA");
+           
+            user.setPassword("11");
+            user.setTipo("Proveedor");
+            user.setPhone(987);
+            user.setId(44);
+            SU.Update(user);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        try {
+            ((Provedor) proveedor).setCedulaJuridica("1");
+
+            ((Provedor) proveedor).setIdUser(44);
+            SU.UpdateProveedor((Provedor) proveedor);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 //        try {
 //            ((Cliente) cliente).setLastName("Yeung");
 //
