@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package patrones.diariofacil;
+
 import java.util.ArrayList;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -17,14 +18,25 @@ import javax.faces.context.FacesContext;
 @ManagedBean(name = "Cliente", eager = true)
 @RequestScoped
 
-public class Cliente extends Usuario{
+public class Cliente extends Usuario {
 
     private String LastName;
     private ArrayList<Orden> purchaseLst = new ArrayList<>();
-   
+
     private int numberOfPurchase;
     private int idUser;
-    
+     private int numId;
+
+    public int getNumId() {
+        return numId;
+    }
+
+    public void setNumId(int numId) {
+        this.numId = numId;
+    }
+
+   
+
     public int idUsuario() {
 
         ServicioUsuario SU = new ServicioUsuario();
@@ -34,7 +46,7 @@ public class Cliente extends Usuario{
             for (Usuario usuario : SU.buscaTodos()) {
                 if (usuario.getEmail().equals(this.email)) {
                     id = usuario.getId();
-                     System.out.println(id);
+                    System.out.println(id);
                 }
             }
         } catch (Exception ex) {
@@ -42,15 +54,12 @@ public class Cliente extends Usuario{
         }
         return id;
     }
-    
 
-    
-    
     public void insertarCliente() {
 
-       ServicioUsuario SU = new ServicioUsuario();
+        ServicioUsuario SU = new ServicioUsuario();
         Usuario user = new Usuario();
-        
+
         try {
             user.setName(this.name);
             user.setEmail(this.email);
@@ -60,50 +69,49 @@ public class Cliente extends Usuario{
 
             SU.insertar(user);
             idUser = idUsuario();
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         try {
-             user = new Cliente();
+            user = new Cliente();
             ((Cliente) user).setLastName(LastName);
             ((Cliente) user).setNumberOfPurchase(numberOfPurchase);
             ((Cliente) user).setIdUser(idUser);
-              SU.insertarCliente(((Cliente) user));
+            SU.insertarCliente(((Cliente) user));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    
-    public void ActualizarCliente(){
-    
+
+    public void actualizarCliente() {
+
         ServicioUsuario SU = new ServicioUsuario();
         Usuario user = new Usuario();
         Usuario cliente = new Cliente();
-         id = user.getId();
-     try {
-         
+        
+        try {
+
             user.setName(this.name);
-            user.setEmail(this.email);
             user.setPassword(this.password);
             user.setTipo("Cliente");
-            user.setPhone(this.phone);        
-            user.setId(id);        
+            user.setPhone(this.phone);
+            user.setId(getNumId());
             SU.Update(user);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-     
-      try {
+
+        try {
             ((Cliente) cliente).setLastName(this.LastName);
-            ((Cliente) cliente).setIdUser(id);
+            ((Cliente) cliente).setIdUser(getNumId());
             SU.UpdateCliente(((Cliente) cliente));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-          
+
     }
-    
+
     public String tipoUsuario() {
 
         ServicioUsuario SU = new ServicioUsuario();
@@ -111,9 +119,9 @@ public class Cliente extends Usuario{
 
         try {
             for (Usuario usuario : SU.buscaTodos()) {
-                if (usuario.getEmail().equals(this.email)&&usuario.getPassword().equals(this.password)) {
+                if (usuario.getEmail().equals(this.email) && usuario.getPassword().equals(this.password)) {
                     tipo = usuario.getTipo();
-                     System.out.println(tipo);
+                    System.out.println(tipo);
                 }
             }
         } catch (Exception ex) {
@@ -121,41 +129,37 @@ public class Cliente extends Usuario{
         }
         return tipo;
     }
-    
-    public String validarUsuario(){
-    
-        String pag="";
-        if (tipoUsuario().equals("Cliente")) {
-          
-            pag= "UserHome";
-        } else {
-         
-         if(tipoUsuario().equals("Administrador")){
-            pag= "AdmiHome";}
+
+    public String validarUsuario() {
+
+        String pag = "";
+        numId= idUsuario();
         
-         else {
-              FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR,"Usuario o contraseña incorrecto ",""));
-             pag= "Login";
-             }
-     }
+        switch (tipoUsuario()) {
+            case "Cliente":
+                pag = "UserHome";
+                break;
+            case "Administrador":
+                pag = "AdmiHome";
+                break;
+            default:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecto ", ""));
+                pag = "Login";
+                break;
+        }
         return pag;
     }
-    
-    
-    
-    
-    
+
     public Cliente() {
     }
 
     public Cliente(String LastName, int numberOfPurchase, int idUser) {
         this.LastName = LastName;
-    
+
         this.numberOfPurchase = numberOfPurchase;
         this.idUser = idUser;
     }
-
 
     public String getLastName() {
         return LastName;
@@ -188,5 +192,5 @@ public class Cliente extends Usuario{
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
-    
+
 }

@@ -137,8 +137,8 @@ public class ServicioUsuario extends Servicio {
         this.conectar();
         try {
             PreparedStatement pstmt = this.getConexion().prepareStatement(UPDATE);
-            pstmt.setString(1, persona.getName());
-          
+            
+            pstmt.setString(1, persona.getName());        
             pstmt.setString(2, persona.getPassword());
             pstmt.setString(3, persona.getTipo());         
             pstmt.setInt(4, persona.getPhone());
