@@ -35,6 +35,8 @@ public class ServicioCategoria extends Servicio{
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new Exception("No se pudo insertar la categoría.");
+        }finally {
+            this.desconectar();
         }
     }
      

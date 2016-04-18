@@ -123,6 +123,9 @@ public class Cliente extends Usuario {
                     tipo = usuario.getTipo();
                     System.out.println(tipo);
                 }
+                else{
+                return "1";
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -144,7 +147,7 @@ public class Cliente extends Usuario {
                 break;
             default:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecto ", ""));
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecta ", ""));
                 pag = "Login";
                 break;
         }

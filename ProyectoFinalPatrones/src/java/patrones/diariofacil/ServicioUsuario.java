@@ -25,11 +25,10 @@ public class ServicioUsuario extends Servicio {
     private static final String DELETEPROVEEDOR = "DELETE FROM PROVEEDOR WHERE USUARIO_IDUSUARIO = (?)";
     private static final String UPDATE = "UPDATE USUARIO SET NOMBRE =(?),PASSWORD=(?),TIPO=(?),TELEFONO=(?) WHERE IDUSUARIO=(?)";
     private static final String UPDATECLIENTE = "UPDATE CLIENTE SET APELLIDO =(?) WHERE IDUSUARIO=(?)";
-     private static final String UPDATEPROVEEDOR = "UPDATE PROVEEDOR SET CEDULAJURIDICA =(?) WHERE USUARIO_IDUSUARIO=(?)";
-    private static final String BUSCA_TODOS = "SELECT IDUSUARIO, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO FROM USUARIO";
-    private static final String BUSCARPORTIPO = "SELECT IDUSUARIO, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO FROM USUARIO WHERE TIPO=(?)";
-  
-    
+    private static final String UPDATEPROVEEDOR = "UPDATE PROVEEDOR SET CEDULAJURIDICA =(?) WHERE USUARIO_IDUSUARIO=(?)";
+    private static final String BUSCAPROVEEDOR = "SELECT IDUSUARIO, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO,CEDULAJURIDICA,USUARIO_IDUSUARIO,IDPROVEEDOR FROM USUARIO,PROVEEDOR WHERE IDUSUARIO=USUARIO_IDUSUARIO";
+
+
     public void insertar(Usuario persona) throws Exception {
 
         this.conectar();
@@ -137,13 +136,13 @@ public class ServicioUsuario extends Servicio {
         this.conectar();
         try {
             PreparedStatement pstmt = this.getConexion().prepareStatement(UPDATE);
-            
-            pstmt.setString(1, persona.getName());        
+
+            pstmt.setString(1, persona.getName());
             pstmt.setString(2, persona.getPassword());
-            pstmt.setString(3, persona.getTipo());         
+            pstmt.setString(3, persona.getTipo());
             pstmt.setInt(4, persona.getPhone());
             pstmt.setInt(5, persona.getId());
-            
+
             pstmt.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -152,7 +151,7 @@ public class ServicioUsuario extends Servicio {
             this.desconectar();
         }
     }
-    
+
     public void UpdateCliente(Cliente persona) throws Exception {
 
         this.conectar();
@@ -160,44 +159,42 @@ public class ServicioUsuario extends Servicio {
             PreparedStatement pstmt = this.getConexion().prepareStatement(UPDATECLIENTE);
             pstmt.setString(1, persona.getLastName());
             pstmt.setInt(2, persona.getIdUser());
-          
+
             pstmt.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new Exception("No se pudo actualizar el cliente.");
-       
-    }
-         finally {
+
+        } finally {
             this.desconectar();
         }
     }
-    
-      public void UpdateProveedor(Provedor persona) throws Exception {
+
+    public void UpdateProveedor(Provedor persona) throws Exception {
 
         this.conectar();
         try {
             PreparedStatement pstmt = this.getConexion().prepareStatement(UPDATEPROVEEDOR);
             pstmt.setString(1, persona.getCedulaJuridica());
             pstmt.setInt(2, persona.getIdUser());
-          
+
             pstmt.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new Exception("No se pudo actualizar el proveedor.");
-       
-    } finally {
+
+        } finally {
             this.desconectar();
         }
-      
-      }
-    
 
-    public List<Usuario> buscaTodos() throws Exception {
+    }
+
+    public List<Provedor> buscaTodos() throws Exception {
         this.conectar();
-        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        ArrayList<Provedor> listaUsuarios = new ArrayList<>();
 
         try {
-            PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCA_TODOS);
+            PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCAPROVEEDOR);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("IDUSUARIO");
@@ -206,7 +203,11 @@ public class ServicioUsuario extends Servicio {
                 String password = rs.getString("PASSWORD");
                 String tipo = rs.getString("TIPO");
                 int telefono = rs.getInt("TELEFONO");
-                listaUsuarios.add(new Usuario(id, nombre, email, password, tipo, telefono));
+               int idProveedor = rs.getInt("IDPROVEEDOR");
+                String cj = rs.getString("CEDULAJURIDICA");
+                int idUser = rs.getInt("USUARIO_IDUSUARIO");
+                
+                listaUsuarios.add(new Provedor(cj , idUser,idProveedor, id, nombre, email, password, tipo, telefono));
             }
 
         } catch (SQLException ex) {
@@ -218,34 +219,5 @@ public class ServicioUsuario extends Servicio {
 
         return listaUsuarios;
     }
-    
-    public Usuario buscaPorTipo(Usuario user) throws Exception {
-        this.conectar();
-        Usuario us=new Usuario() ;
-        try {
-            PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCARPORTIPO);
-            
-            pstmt.setString(1, user.getTipo());
-                     
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-               int id = rs.getInt("IDUSUARIO");
-                String nombre = rs.getString("NOMBRE");
-                String email = rs.getString("EMAIL");
-                String password = rs.getString("PASSWORD");
-                int telefono = rs.getInt("TELEFONO");
-                us = new Usuario(id, nombre, telefono, email, password);
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            throw new Exception("No se pudo buscar el usuario.");
-        } finally {
-            this.desconectar();
-        }
-
-        return us;
-    }
-
 
 }

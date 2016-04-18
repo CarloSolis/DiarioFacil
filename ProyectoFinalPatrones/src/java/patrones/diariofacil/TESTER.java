@@ -5,6 +5,8 @@
  */
 package patrones.diariofacil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,9 +28,6 @@ public class TESTER {
         Usuario proveedor = new Provedor();
         Caretaker ct = new Caretaker();
 
-        
-     
-        
 //        try {
 //            user.setName("Jordan");
 //            user.setEmail("Jordan@gmail.com");
@@ -89,25 +88,25 @@ public class TESTER {
 //            ex.printStackTrace();
 //        }
         ///////////Update////
-        try {
-            user.setName("Jordan SA");
-           
-            user.setPassword("11");
-            user.setTipo("Proveedor");
-            user.setPhone(987);
-            user.setId(44);
-            SU.Update(user);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        try {
-            ((Provedor) proveedor).setCedulaJuridica("1");
-
-            ((Provedor) proveedor).setIdUser(44);
-            SU.UpdateProveedor((Provedor) proveedor);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+//        try {
+//            user.setName("Jordan SA");
+//           
+//            user.setPassword("11");
+//            user.setTipo("Proveedor");
+//            user.setPhone(987);
+//            user.setId(44);
+//            SU.Update(user);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//        try {
+//            ((Provedor) proveedor).setCedulaJuridica("1");
+//
+//            ((Provedor) proveedor).setIdUser(44);
+//            SU.UpdateProveedor((Provedor) proveedor);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
 //        try {
 //            ((Cliente) cliente).setLastName("Yeung");
 //
@@ -116,7 +115,6 @@ public class TESTER {
 //        } catch (Exception ex) {
 //            ex.printStackTrace();
 //        }
-
 //        ServicioProducto SP = new ServicioProducto();
 //        Product p = new Product();
 //
@@ -144,6 +142,19 @@ public class TESTER {
 //
 //        System.out.println(m.getProducto());
 //        System.out.println(m1.getProducto());
+        List<Provedor> listaProvedor = new ArrayList<Provedor>();
+        try {
+
+            for (Provedor prove : SU.buscaTodos()) {
+                listaProvedor.add(new Provedor( prove.getIdProvider(),prove.getName()));
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+        System.out.println(listaProvedor);
+
     }
 
 }

@@ -6,6 +6,7 @@
 package patrones.diariofacil;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -21,7 +22,33 @@ public class Provedor extends Usuario {
     private ArrayList<Product> productLst = new ArrayList<>();
     private String cedulaJuridica;
     private int idUser;
+    private int idProvider;
+    
+       public Provedor() {
+    }
 
+    public Provedor(String cedulaJuridica, int idUser, int idProvider, int id, String name, String email, String password, String tipo, int phone) {
+        super(id, name, email, password, tipo, phone);
+        this.cedulaJuridica = cedulaJuridica;
+        this.idUser = idUser;
+        this.idProvider = idProvider;
+    }
+
+    public Provedor(String cedulaJuridica, int idProvider) {
+        this.cedulaJuridica = cedulaJuridica;
+        this.idProvider = idProvider;
+    }
+
+    public Provedor(int idProvider, String name) {
+        super(name);
+        this.idProvider = idProvider;
+    }
+    
+    
+    
+
+    
+    
     public int idUsuario() {
 
         ServicioUsuario SU = new ServicioUsuario();
@@ -68,8 +95,25 @@ public class Provedor extends Usuario {
         }
     }
 
-    public Provedor() {
-    }
+
+     public List<Provedor> allProviders() {
+        ServicioUsuario SU= new ServicioUsuario();
+          List<Provedor> listaProvedor = new ArrayList<Provedor>();
+        try {
+
+            for (Provedor prove : SU.buscaTodos()) {
+                  listaProvedor.add(new Provedor( prove.getIdProvider(),prove.getName()));            
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+       
+        return listaProvedor;
+         
+      }
+   
+ 
 
     public Provedor(String cedulaJuridica) {
         this.cedulaJuridica = cedulaJuridica;
@@ -99,4 +143,18 @@ public class Provedor extends Usuario {
         this.idUser = idUser;
     }
 
+    public int getIdProvider() {
+        return idProvider;
+    }
+
+    public void setIdProvider(int idProvider) {
+        this.idProvider = idProvider;
+    }
+    
+
+          @Override
+            public String toString() {
+    
+                return name+" "+idProvider ;
+}
 }

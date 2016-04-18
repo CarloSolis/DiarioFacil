@@ -27,26 +27,37 @@ public class Product implements IProducto {
     private int minimunStock;
     private int actualStock;
     private Product product;
-
+    private int idProvider;
+    private int idCategory;
+     
+    
+      
+      
     public void insertProduct() {
         Caretaker ct = new Caretaker();
-        ServicioProducto SU = new ServicioProducto();
+        ServicioProducto SP = new ServicioProducto();
         Product p = new Product();
 
         try {
             p.setName(this.name);
             p.setDescription(this.description);
             p.setPrice(this.price);
-            p.setProvider(this.provider);
+            p.setActualStock(actualStock);
             p.setMinimunStock(this.minimunStock);
-            SU.insertar(p);
+            p.setIdProvider(this.idProvider);
+            p.setIdCategory(this.idCategory);
+
+            SP.insertar(p);
             ct.addMemento(p.saveToMemento());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
+
     
-    public List<Product>getAllProducts() throws Exception{
+    
+
+    public List<Product> getAllProducts() throws Exception {
         ServicioProducto SU = new ServicioProducto();
         List<Product> lstProduct;
         lstProduct = SU.buscaTodos();
@@ -64,7 +75,7 @@ public class Product implements IProducto {
         this.minimunStock = minimunStock;
         this.actualStock = actualStock;
     }
-    
+
     public Product(int id, String nombre, String description, int price, int minimunStock, int actualStock) {
         //Aqui iba un provider en los parametros
     }
@@ -132,6 +143,25 @@ public class Product implements IProducto {
     public void setActualStock(int actualStock) {
         this.actualStock = actualStock;
     }
+
+    public int getIdProvider() {
+        return idProvider;
+    }
+
+    public void setIdProvider(int idProvider) {
+        this.idProvider = idProvider;
+    }
+
+    public int getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(int idCategory) {
+        this.idCategory = idCategory;
+    }
+
+
+    
 
     public Memento saveToMemento() {
 

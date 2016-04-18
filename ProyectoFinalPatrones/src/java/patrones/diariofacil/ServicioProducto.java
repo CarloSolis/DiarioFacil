@@ -17,11 +17,11 @@ import java.util.List;
  */
 public class ServicioProducto extends Servicio {
 
-    private static final String INSERTAR = "INSERT INTO PRODUCTO (NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL) VALUES(?,?,?,?,?,?)";
-    private static final String DELETE = "DELETE FROM PRODUCTO WHERE ID = (?)";
-    private static final String UPDATE = "UPDATE PRODUCTO SET NOMBRE =(?),DESCRIPCION=(?),PRECIO=(?),PROVEDOR=(?),STOCKMIN=(?),STOCKACTUAL=(?) WHERE ID=(?)";
-    private static final String BUSCA_TODOS = "SELECT ID, NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL FROM PRODUCTO";
-    private static final String BUSCA_UNO = "SELECT ID, NOMBRE,DESCRIPCION,PRECIO,PROVEDOR,STOCKMIN,STOCKACTUAL FROM PRODUCTO WHERE NOMBRE = (?)";
+    private static final String INSERTAR = "INSERT INTO PRODUCTO (PRODUCTONOMBRE,DESCRIPCION,PRECIO,STOCKMINIMO,STOCKACTUAL,PROVEEDOR_IDPROVEEDOR,CATEGORIA_IDCATEGORIA) VALUES(?,?,?,?,?,?,?)";
+    private static final String DELETE = "DELETE FROM PRODUCTO WHERE IDPRODUCTO = (?)";
+    private static final String UPDATE = "UPDATE PRODUCTO SET PRODUCTONOMBRE =(?),DESCRIPCION=(?),PRECIO=(?),PROVEEDOR_IDPROVEEDOR=(?),STOCKMINIMO=(?),STOCKACTUAL=(?) WHERE IDPRODUCTO=(?)";
+    private static final String BUSCA_TODOS = "SELECT IDPRODUCTO, PRODUCTONOMBRE,DESCRIPCION,PRECIO,PROVEEDOR_IDPROVEEDOR,STOCKMINIMO,STOCKACTUAL,CATEGORIA_IDCATEGORIA FROM PRODUCTO";
+    private static final String BUSCA_UNO = "SELECT IDPRODUCTO, PRODUCTONOMBRE,DESCRIPCION,PRECIO,PROVEEDOR_IDPROVEEDOR,STOCKMINIMO,STOCKACTUAL,CATEGORIA_IDCATEGORIA FROM PRODUCTO WHERE PRODUCTONOMBRE = (?)";
 
     public void insertar(Product producto) throws Exception {
 
@@ -31,10 +31,11 @@ public class ServicioProducto extends Servicio {
 
             pstmt.setString(1, producto.getName());
             pstmt.setString(2, producto.getDescription());
-            pstmt.setInt(3, producto.getPrice());
-            pstmt.setInt(4, producto.getProvider().getId()); 
-            pstmt.setInt(5, producto.getMinimunStock());
-            pstmt.setInt(6, producto.getActualStock());
+            pstmt.setInt(3, producto.getPrice()); 
+            pstmt.setInt(4, producto.getMinimunStock());
+            pstmt.setInt(5, producto.getActualStock());
+            pstmt.setInt(6, producto.getIdProvider());
+            pstmt.setInt(7, producto.getIdCategory());
 
             pstmt.execute();
         } catch (SQLException ex) {
