@@ -27,7 +27,7 @@ public class ServicioUsuario extends Servicio {
     private static final String UPDATECLIENTE = "UPDATE CLIENTE SET APELLIDO =(?) WHERE IDUSUARIO=(?)";
     private static final String UPDATEPROVEEDOR = "UPDATE PROVEEDOR SET CEDULAJURIDICA =(?) WHERE USUARIO_IDUSUARIO=(?)";
     private static final String BUSCAPROVEEDOR = "SELECT IDUSUARIO, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO,CEDULAJURIDICA,USUARIO_IDUSUARIO,IDPROVEEDOR FROM USUARIO,PROVEEDOR WHERE IDUSUARIO=USUARIO_IDUSUARIO";
-
+    private static final String BUSCA_TODOS = "SELECT IDUSUARIO, NOMBRE,EMAIL,PASSWORD,TIPO,TELEFONO FROM USUARIO";
 
     public void insertar(Usuario persona) throws Exception {
 
@@ -208,6 +208,36 @@ public class ServicioUsuario extends Servicio {
                 int idUser = rs.getInt("USUARIO_IDUSUARIO");
                 
                 listaUsuarios.add(new Provedor(cj , idUser,idProveedor, id, nombre, email, password, tipo, telefono));
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo buscar el registro.");
+        } finally {
+            this.desconectar();
+        }
+
+        return listaUsuarios;
+    }
+    
+    
+    public List<Usuario> buscaUsuarios() throws Exception {
+        this.conectar();
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCA_TODOS);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("IDUSUARIO");
+                String nombre = rs.getString("NOMBRE");
+                String email = rs.getString("EMAIL");
+                String password = rs.getString("PASSWORD");
+                String tipo = rs.getString("TIPO");
+                int telefono = rs.getInt("TELEFONO");
+             
+                
+                listaUsuarios.add(new Usuario( id, nombre, email, password, tipo, telefono));
             }
 
         } catch (SQLException ex) {

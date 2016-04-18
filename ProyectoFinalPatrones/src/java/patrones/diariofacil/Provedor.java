@@ -55,7 +55,7 @@ public class Provedor extends Usuario {
         Usuario User = new Usuario();
 
         try {
-            for (Usuario usuario : SU.buscaTodos()) {
+            for (Usuario usuario : SU.buscaUsuarios()) {
                 if (usuario.getEmail().equals(this.email)) {
                     id = usuario.getId();
                     System.out.println(id);

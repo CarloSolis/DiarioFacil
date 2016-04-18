@@ -43,7 +43,7 @@ public class Cliente extends Usuario {
         Usuario User = new Usuario();
 
         try {
-            for (Usuario usuario : SU.buscaTodos()) {
+            for (Usuario usuario : SU.buscaUsuarios()) {
                 if (usuario.getEmail().equals(this.email)) {
                     id = usuario.getId();
                     System.out.println(id);
@@ -118,14 +118,16 @@ public class Cliente extends Usuario {
         Usuario User = new Usuario();
 
         try {
-            for (Usuario usuario : SU.buscaTodos()) {
+            for (Usuario usuario : SU.buscaUsuarios()) {
                 if (usuario.getEmail().equals(this.email) && usuario.getPassword().equals(this.password)) {
                     tipo = usuario.getTipo();
-                    System.out.println(tipo);
+                   
+                      return tipo;
                 }
                 else{
-                return "1";
+                tipo="";
                 }
+                
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -138,18 +140,20 @@ public class Cliente extends Usuario {
         String pag = "";
         numId= idUsuario();
         
-        switch (tipoUsuario()) {
-            case "Cliente":
+        if (tipoUsuario().equals("Cliente")) {
+            
                 pag = "UserHome";
-                break;
-            case "Administrador":
+        }
+        else{
+           if (tipoUsuario().equals("Administrador")) {
                 pag = "AdmiHome";
-                break;
-            default:
+           }
+           else{
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecta ", ""));
                 pag = "Login";
-                break;
+               
+        }
         }
         return pag;
     }

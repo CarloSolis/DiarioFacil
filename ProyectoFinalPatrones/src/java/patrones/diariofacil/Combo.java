@@ -17,7 +17,7 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 
 public class Combo {
-private int Id;
+    private int Id;
     private String nombre;
     private ArrayList<Product> lstProducto = new ArrayList<>();
 
