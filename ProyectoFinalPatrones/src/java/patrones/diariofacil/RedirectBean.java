@@ -20,6 +20,14 @@ public class RedirectBean {
         return "AdmiHome";
     }
      
+      public String redirectToCreateProduct(){
+        return "CreateProduct";
+    }
+     
+      public String redirectToCategory(){
+        return "CreateCategory";
+    }
+     
       public String redirectToUserHome(){
         return "UserHome";
     }
