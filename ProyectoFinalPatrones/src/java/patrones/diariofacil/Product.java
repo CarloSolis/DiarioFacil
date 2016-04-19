@@ -29,10 +29,38 @@ public class Product implements IProducto {
     private Product product;
     private int idProvider;
     private int idCategory;
-     
     
+      public Product() {
+    }
+    
+    
+
+    public Product(String name, int price, int actualStock) {
+        this.name = name;
+        this.price = price;
+        this.actualStock = actualStock;
+    }
+
+
+    public Product(int id, String name, String description, int price, int minimunStock, int actualStock, int idProvider, int idCategory) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.minimunStock = minimunStock;
+        this.actualStock = actualStock;
+        this.idProvider = idProvider;
+        this.idCategory = idCategory;
+    }
+        
+    public Product( String name, int actualStock) {
       
-      
+        this.name = name;
+        this.actualStock = actualStock;
+    }
+
+            
+    @Override
     public void insertProduct() {
         Caretaker ct = new Caretaker();
         ServicioProducto SP = new ServicioProducto();
@@ -54,30 +82,24 @@ public class Product implements IProducto {
         }
     }
 
-    
-    
+   
 
+    @Override
     public List<Product> getAllProducts() throws Exception {
-        ServicioProducto SU = new ServicioProducto();
-        List<Product> lstProduct;
-        lstProduct = SU.buscaTodos();
+        ServicioProducto SP = new ServicioProducto();
+        List<Product> lstProduct = new ArrayList<Product>();
+        
+         try {
+
+            for (Product prod : SP.buscaTodos()) {
+                  lstProduct.add(new Product(prod.getName(),prod.getPrice(),prod.getActualStock()));            
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+       
         return lstProduct;
-    }
-
-    public Product() {
-    }
-
-    public Product(String name, String description, int price, Provedor provider, int minimunStock, int actualStock) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.provider = provider;
-        this.minimunStock = minimunStock;
-        this.actualStock = actualStock;
-    }
-
-    public Product(int id, String nombre, String description, int price, int minimunStock, int actualStock) {
-        //Aqui iba un provider en los parametros
     }
 
     public int getId() {
@@ -160,9 +182,6 @@ public class Product implements IProducto {
         this.idCategory = idCategory;
     }
 
-
-    
-
     public Memento saveToMemento() {
 
         System.err.println("Guardando Memento....");
@@ -175,7 +194,7 @@ public class Product implements IProducto {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + '}';
+        return   "Producto : " + name +  " Precio : " + price + " Cantidad disponible : "+actualStock;
     }
 
 }

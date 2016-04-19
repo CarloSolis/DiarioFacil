@@ -32,7 +32,7 @@ public class Configurador {
 
         try {
             for (Product p : SP.buscaTodos()) {
-                lstProducto.add(new Product( p.getName(), p.getDescription(), p.getPrice(), p.getProvider(), p.getActualStock(), p.getMinimunStock()));
+                lstProducto.add(new Product( p.getId(),p.getName(), p.getDescription(), p.getPrice(), p.getActualStock(), p.getMinimunStock(),p.getIdProvider(),p.getIdCategory()));
             }
 
         } catch (Exception ex) {

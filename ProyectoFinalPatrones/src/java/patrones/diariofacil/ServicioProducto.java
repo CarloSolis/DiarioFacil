@@ -19,10 +19,12 @@ public class ServicioProducto extends Servicio {
 
     private static final String INSERTAR = "INSERT INTO PRODUCTO (PRODUCTONOMBRE,DESCRIPCION,PRECIO,STOCKMINIMO,STOCKACTUAL,PROVEEDOR_IDPROVEEDOR,CATEGORIA_IDCATEGORIA) VALUES(?,?,?,?,?,?,?)";
     private static final String DELETE = "DELETE FROM PRODUCTO WHERE IDPRODUCTO = (?)";
-    private static final String UPDATE = "UPDATE PRODUCTO SET PRODUCTONOMBRE =(?),DESCRIPCION=(?),PRECIO=(?),PROVEEDOR_IDPROVEEDOR=(?),STOCKMINIMO=(?),STOCKACTUAL=(?) WHERE IDPRODUCTO=(?)";
+    private static final String UPDATE = "UPDATE PRODUCTO SET PRODUCTONOMBRE =(?),DESCRIPCION=(?),PRECIO=(?),STOCKMINIMO=(?),STOCKACTUAL=(?) WHERE IDPRODUCTO=(?)";
     private static final String BUSCA_TODOS = "SELECT IDPRODUCTO, PRODUCTONOMBRE,DESCRIPCION,PRECIO,PROVEEDOR_IDPROVEEDOR,STOCKMINIMO,STOCKACTUAL,CATEGORIA_IDCATEGORIA FROM PRODUCTO";
     private static final String BUSCA_UNO = "SELECT IDPRODUCTO, PRODUCTONOMBRE,DESCRIPCION,PRECIO,PROVEEDOR_IDPROVEEDOR,STOCKMINIMO,STOCKACTUAL,CATEGORIA_IDCATEGORIA FROM PRODUCTO WHERE PRODUCTONOMBRE = (?)";
-
+    
+    private static final String BUSCAPORPROVEEDOR = "SELECT PRODUCTONOMBRE,PROVEEDOR_IDPROVEEDOR,STOCKACTUAL FROM PRODUCTO WHERE PROVEEDOR_IDPROVEEDOR(?)";
+    
     public void insertar(Product producto) throws Exception {
 
         this.conectar();
@@ -56,7 +58,7 @@ public class ServicioProducto extends Servicio {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("No se pudo eliminar el registro.");
+            throw new Exception("No se pudo eliminar el producto.");
         } finally {
             this.desconectar();
         }
@@ -71,34 +73,37 @@ public class ServicioProducto extends Servicio {
             pstmt.setString(1, producto.getName());
             pstmt.setString(2, producto.getDescription());
             pstmt.setInt(3, producto.getPrice());
-            pstmt.setObject(4, producto.getProvider());
-            pstmt.setInt(5, producto.getMinimunStock());
-            pstmt.setInt(6, producto.getActualStock());
+            
+            pstmt.setInt(4, producto.getMinimunStock());
+            pstmt.setInt(5, producto.getActualStock());
+           
+            pstmt.setInt(6, producto.getId());
 
             pstmt.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new Exception("No se pudo actualizar el registro.");
+            throw new Exception("No se pudo actualizar el producto.");
         } finally {
             this.desconectar();
         }
     }
 
-    public List<Product> buscaTodos() throws Exception {
-        this.conectar();
+    public List<Product> misProductos() throws Exception {
+       
+         this.conectar();
         ArrayList<Product> lstProduct = new ArrayList<>();
-            //Aqui jalaba un provider
+           
         try {
-            PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCA_TODOS);
+            PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCAPORPROVEEDOR);
+//              pstmt.setInt(1, );
+              
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                String nombre = rs.getString("NOMBRE");
-                String description = rs.getString("DESCRIPCION");
-                int price = rs.getInt("PRECIO");
-                int minimunStock = rs.getInt("STOCKMIN");
+               
+                String nombre = rs.getString("PRODUCTONOMBRE");
                 int actualStock = rs.getInt("STOCKACTUAL");
-                lstProduct.add(new Product(id, nombre, description, price, minimunStock, actualStock));
+               
+                lstProduct.add(new Product(nombre,actualStock));
             }
 
         } catch (SQLException ex) {
@@ -110,6 +115,40 @@ public class ServicioProducto extends Servicio {
 
         return lstProduct;
     }
+    
+    public List<Product> buscaTodos() throws Exception {
+        this.conectar();
+        ArrayList<Product> lstProduct = new ArrayList<>();
+            
+        try {
+            PreparedStatement pstmt = this.getConexion().prepareStatement(BUSCA_TODOS);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("IDPRODUCTO");
+                String nombre = rs.getString("PRODUCTONOMBRE");
+                String description = rs.getString("DESCRIPCION");
+                int price = rs.getInt("PRECIO");
+                int minimunStock = rs.getInt("STOCKMINIMO");
+                int actualStock = rs.getInt("STOCKACTUAL");
+                int idProvider= rs.getInt("PROVEEDOR_IDPROVEEDOR");
+                int idCategoria= rs.getInt("CATEGORIA_IDCATEGORIA");
+                lstProduct.add(new Product(id, nombre, description, price, minimunStock, actualStock,idProvider,idCategoria));
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new Exception("No se pudo buscar el registro.");
+        } finally {
+            this.desconectar();
+        }
+
+        return lstProduct;
+    }
+    
+    
+     
+    
+    
 
     public Product buscaPorNombre(String nombre) throws Exception {
         this.conectar();
@@ -122,13 +161,16 @@ public class ServicioProducto extends Servicio {
             
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                int id = rs.getInt("ID");
-                String nombreBBDD = rs.getString("NOMBRE");
+                int id = rs.getInt("IDPRODUCTO");
+                String nombreBBDD = rs.getString("PRODUCTONOMBRE");
                 String description = rs.getString("DESCRIPCION");
                 int price = rs.getInt("PRECIO");
-                int minimunStock = rs.getInt("STOCKMIN");
+                int minimunStock = rs.getInt("STOCKMINIMO");
                 int actualStock = rs.getInt("STOCKACTUAL");
-                product = new Product(id, nombreBBDD, description, price, minimunStock, actualStock);
+                int idProvider= rs.getInt("PROVEEDOR_IDPROVEEDOR");
+                int idCategoria= rs.getInt("CATEGORIA_IDCATEGORIA");
+                
+                product = new Product(id, nombreBBDD, description, price, minimunStock, actualStock,idProvider,idCategoria);
             }
 
         } catch (SQLException ex) {

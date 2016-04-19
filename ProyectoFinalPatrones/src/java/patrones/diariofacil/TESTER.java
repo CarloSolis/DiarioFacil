@@ -23,11 +23,15 @@ public class TESTER {
         // TODO code application logic here
 
         ServicioUsuario SU = new ServicioUsuario();
+         ServicioProducto SP = new ServicioProducto();
         Usuario user = new Usuario();
         Usuario cliente = new Cliente();
         Usuario proveedor = new Provedor();
         Caretaker ct = new Caretaker();
-
+        Product prod= new Product();
+     
+        
+        
 //        try {
 //            user.setName("Jordan");
 //            user.setEmail("Jordan@gmail.com");
@@ -130,10 +134,10 @@ public class TESTER {
 //        } catch (Exception ex) {
 //            ex.printStackTrace();
 //        }
-//        Product product = new Product("Coca~Cola", "Bebida 800ml", 950, (Provedor) proveedor, 15, 15);
+//        Product product = new Product(1,"Coca~Cola", "Bebida 600ml", 950, 5, 15,1,2);
 //        product.setProduct(product);
 //        ct.addMemento(product.saveToMemento());
-//        product = new Product("Coca~ColaS", "Bebida 800ml", 950, (Provedor) proveedor, 15, 15);
+//        product = new Product(2,"Pepsi", "Bebida 495ml", 850, 5, 15,2,2);
 //        product.setProduct(product);
 //        ct.addMemento(product.saveToMemento());
 //
@@ -142,19 +146,35 @@ public class TESTER {
 //
 //        System.out.println(m.getProducto());
 //        System.out.println(m1.getProducto());
-        List<Provedor> listaProvedor = new ArrayList<Provedor>();
-        try {
 
-            for (Provedor prove : SU.buscaTodos()) {
-                listaProvedor.add(new Provedor( prove.getIdProvider(),prove.getName()));
+//            ///buscar proveedor
+//        List<Provedor> listaProvedor = new ArrayList<Provedor>();
+//        try {
+//
+//            for (Provedor prove : SU.buscaTodos()) {
+//                listaProvedor.add(new Provedor( prove.getIdProvider(),prove.getName()));
+//
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//
+//        }
+//        System.out.println(listaProvedor);
+     
 
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-
-        }
-        System.out.println(listaProvedor);
+        /////////Update product////
+//        try {
+//            prod.setName("Cloro");
+//            prod.setDescription("100ml");
+//            prod.setPrice(250);
+//            prod.setActualStock(10);
+//            prod.setMinimunStock(3);
+//           
+//            prod.setId(12);
+//            SP.Update(prod);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
 
     }
-
 }

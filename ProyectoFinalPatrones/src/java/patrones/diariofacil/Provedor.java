@@ -112,6 +112,51 @@ public class Provedor extends Usuario {
         return listaProvedor;
          
       }
+     
+      public List<Product> myProducts() {
+        ServicioProducto SP= new ServicioProducto();
+          List<Product> listaProd = new ArrayList<Product>();
+          
+          try {
+            for (Product product: SP.misProductos()) {
+                  listaProd.add(new Product( product.getName(),product.getActualStock()));            
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+       
+        return listaProd;
+         
+      }
+     
+       public void actualizarProveedor() {
+
+        ServicioUsuario SU = new ServicioUsuario();
+        Usuario user = new Usuario();
+        Usuario proveedor = new Provedor();
+        
+        try {
+
+            user.setName(this.name);
+            user.setPassword(this.password);
+            user.setTipo("Proveedor");
+            user.setPhone(this.phone);
+            user.setId(this.id);
+            SU.Update(user);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }try {
+            ((Provedor) proveedor).setCedulaJuridica(cedulaJuridica);
+            ((Provedor) proveedor).setIdUser(id);
+            SU.UpdateProveedor(((Provedor) proveedor));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+     
    
  
 

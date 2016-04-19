@@ -5,10 +5,13 @@
  */
 package patrones.diariofacil;
 
+import java.util.List;
+
 /**
  *
  * @author Cali
  */
 public interface IProducto {
-    
+     public void insertProduct();
+      public List<Product> getAllProducts() throws Exception;
 }

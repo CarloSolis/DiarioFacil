@@ -96,7 +96,7 @@ public class Cliente extends Usuario {
             user.setPassword(this.password);
             user.setTipo("Cliente");
             user.setPhone(this.phone);
-            user.setId(getNumId());
+            user.setId(this.id);
             SU.Update(user);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -104,7 +104,7 @@ public class Cliente extends Usuario {
 
         try {
             ((Cliente) cliente).setLastName(this.LastName);
-            ((Cliente) cliente).setIdUser(getNumId());
+            ((Cliente) cliente).setIdUser(id);
             SU.UpdateCliente(((Cliente) cliente));
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -149,11 +149,16 @@ public class Cliente extends Usuario {
                 pag = "AdmiHome";
            }
            else{
+                if (tipoUsuario().equals("Proveedor")) {
+                pag = "ProviderHome";
+           }
+                else{
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrecta ", ""));
                 pag = "Login";
                
-        }
+            }
+           }
         }
         return pag;
     }

@@ -19,6 +19,9 @@ public class RedirectBean {
      public String redirectToAdmiHome(){
         return "AdmiHome";
     }
+      public String redirectToProviderHome(){
+        return "ProviderHome";
+    }
      
       public String redirectToCreateProduct(){
         return "CreateProduct";
@@ -34,7 +37,9 @@ public class RedirectBean {
       public String redirectToUpdateClient(){
         return "UpdateClient";
     }
-    
+         public String redirectToUpdateProvider(){
+        return "UpdateProvider";
+    }
     public String redirectToSignup(){
         return "Signup";
     }
@@ -46,7 +51,7 @@ public class RedirectBean {
     }
     
     public String redirectToProducts(){
-        return "Products";
+        return "ProductsList";
     }
     
     public String redirectToAddProducts(){
