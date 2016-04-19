@@ -17,7 +17,7 @@ import javax.faces.bean.RequestScoped;
  */
 public class Carro {
 
-
+Cliente client;
     ArrayList<Item> itemList = new ArrayList<>();
     double total = 0;
 
@@ -34,6 +34,14 @@ public class Carro {
 
     public double getTotal() {
         return total;
+    }
+
+    public Cliente getClient() {
+        return client;
+    }
+
+    public void setClient(Cliente client) {
+        this.client = client;
     }
 
     public void setTotal(double total) {
